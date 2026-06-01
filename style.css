@@ -179,7 +179,7 @@ body {
 
 .section-centered .container-narrow p:last-child { margin-bottom: 0; }
 
-/* ── Section: Vis (full container-wide) ──────────────────── */
+/* ── Section: Vis ─────────────────────────────────────────── */
 .section-vis {
   padding: var(--section-gap) 0;
   overflow: hidden;
@@ -208,7 +208,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 48px 64px;
-  align-items: center; /* vertically centre text next to chart */
+  align-items: center;
 }
 
 .col-text {
@@ -217,9 +217,7 @@ body {
   gap: 14px;
 }
 
-/* ── Typography — unified serif headings ─────────────────── */
-
-/* Page-level h2 used in section-centered: large, serif, centered */
+/* ── Typography ───────────────────────────────────────────── */
 .section-heading {
   font-family: var(--font-serif);
   font-size: clamp(22px, 2.8vw, 32px);
@@ -230,7 +228,6 @@ body {
   margin-bottom: 12px;
 }
 
-/* Vis label — small caps above heading */
 .vis-label {
   font-size: 11px;
   font-weight: 600;
@@ -241,7 +238,6 @@ body {
   display: block;
 }
 
-/* Body copy */
 .section-desc,
 .col-text p,
 .container-narrow p {
@@ -257,23 +253,41 @@ body {
   font-weight: 600;
 }
 
-/* ── Vis Container ────────────────────────────────────────── */
+/* ── Vis Container — default: full width, centred content ─── */
 .vis-container {
   width: 100%;
   max-width: 100%;
   overflow: hidden;
+  /* Centre the vega-embed block */
+  display: block;
+  text-align: center;
 }
 
+/* The vega-embed div is display:inline-block so text-align:center works */
 .vis-container .vega-embed {
-  width: 100% !important;
+  display: inline-block !important;
+  text-align: left !important;   /* text inside chart stays left */
   max-width: 100% !important;
 }
 
-/* Force Vega canvases to not overflow */
+/* Force Vega canvases/SVGs not to overflow */
 .vis-container canvas,
 .vis-container svg {
   max-width: 100% !important;
-  height: auto !important;
+}
+
+/* ── Vis Container modifiers ──────────────────────────────── */
+
+/* Narrow: for diverging bar — cap width, centred */
+.vis-container--narrow {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Wide: city chart uses full container width */
+.vis-container--wide {
+  max-width: 100%;
 }
 
 /* Vega tooltip */
@@ -336,6 +350,30 @@ body {
   font-size: 15px;
   color: var(--brown-2);
   line-height: 1.65;
+}
+
+/* ── Narration block below a chart ───────────────────────── */
+.section-narration {
+  max-width: var(--prose-w);
+  width: 100%;
+  margin: 40px auto 0;
+  padding: 0 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: left;
+}
+
+.section-narration p {
+  font-size: 15.5px;
+  color: var(--brown-2);
+  line-height: 1.8;
+}
+
+.section-narration p strong {
+  color: var(--brown-1);
+  font-weight: 600;
 }
 
 /* ── Footer ───────────────────────────────────────────────── */
@@ -414,7 +452,6 @@ body {
     gap: 32px;
   }
 
-  /* On mobile keep text before chart for both column orders */
   .grid-2 .col-chart { order: 2; }
   .grid-2 .col-text  { order: 1; }
 
@@ -441,29 +478,17 @@ body {
 /* ── Selection ────────────────────────────────────────────── */
 ::selection { background: var(--accent); color: var(--cream); }
 
-/* ── Narration block below chart ──────────────────────────── */
-.section-narration {
-  max-width: var(--prose-w);
-  margin: 36px auto 0;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+/* ── Centre charts inside section-vis container-wide ─────── */
+/* Vega embed is inline-block; text-align:center on parent centres it */
+.section-vis .container-wide {
+  text-align: center;
+}
+
+/* But keep section-intro-centered and section-narration text centred/left as intended */
+.section-vis .container-wide .section-intro-centered {
+  text-align: center;
+}
+
+.section-vis .container-wide .section-narration {
   text-align: left;
-}
-
-.section-narration p {
-  font-size: 15.5px;
-  color: var(--brown-2);
-  line-height: 1.8;
-}
-
-.section-narration p strong {
-  color: var(--brown-1);
-  font-weight: 600;
-}
-
-/* ── Narrow vis — centre chart and cap its width ─────────── */
-.vis-container--narrow {
-  max-width: 640px;
-  margin: 0 auto;
 }

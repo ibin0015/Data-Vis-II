@@ -217,7 +217,7 @@
         <p class="vis-label">City-Level Prices, Grouped by State</p>
         <h3 class="section-heading">Zoom in and an interesting pattern emerges</h3>
       </div>
-      <div id="strip_flatwhite_by_city" class="vis-container vis-container--narrow"></div>
+      <div id="strip_flatwhite_by_city" class="vis-container vis-container--wide"></div>
       <div class="section-narration">
         <p>Within each state, city prices are remarkably consistent. Brisbane, Gold Coast, Sunshine Coast and Cairns all sit at exactly $5.03. Adelaide, Barossa Valley and Victor Harbor all share $5.13. This consistency tells us that pricing is driven by <strong>state-level factors</strong> — wages, rent, supply logistics — rather than individual city dynamics.</p>
         <p>The one clear outlier is Darwin and Alice Springs in the NT, which stand alone at $5.35, well above every other city in the country. Hover over any dot to see the city name and price.</p>
@@ -253,5 +253,16 @@
 </footer>
 
 <script src="vega_lite_vis.js"></script>
+<script>
+// After vega_lite_vis.js runs, nudge all embeds to honour container width
+// and re-centre by setting the summary container display
+document.querySelectorAll('.vis-container').forEach(function(wrapper) {
+  var embed = wrapper.querySelector('.vega-embed');
+  if (embed) {
+    embed.style.display = 'inline-block';
+    embed.style.textAlign = 'left';
+  }
+});
+</script>
 </body>
 </html>
