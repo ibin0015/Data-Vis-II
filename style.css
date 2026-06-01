@@ -24,8 +24,8 @@
   --font-serif:  'Playfair Display', Georgia, serif;
   --font-body:   'DM Sans', 'Helvetica Neue', sans-serif;
 
-  --prose-w:     680px;   /* comfortable reading width */
-  --wide-w:      1100px;  /* charts / two-col sections */
+  --prose-w:     680px;
+  --wide-w:      1100px;
   --section-gap: 72px;
 }
 
@@ -122,12 +122,6 @@ body {
   margin: 0 auto 20px;
 }
 
-.hero-byline {
-  font-size: 12px;
-  color: var(--brown-4);
-  letter-spacing: 0.06em;
-}
-
 .hero-scroll {
   position: absolute;
   bottom: 32px;
@@ -149,7 +143,7 @@ body {
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 52px 32px 0;
+  padding: 64px 32px 0;
   max-width: var(--wide-w);
   margin: 0 auto;
 }
@@ -163,18 +157,18 @@ body {
 .chapter-label {
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent);
   white-space: nowrap;
-  padding: 5px 14px;
+  padding: 6px 16px;
   border: 1px solid var(--accent);
   border-radius: 2px;
 }
 
 /* ── Section: Centred Prose ───────────────────────────────── */
 .section-centered {
-  padding: var(--section-gap) 0;
+  padding: var(--section-gap) 0 48px;
   text-align: center;
 }
 
@@ -188,6 +182,7 @@ body {
 /* ── Section: Vis (full container-wide) ──────────────────── */
 .section-vis {
   padding: var(--section-gap) 0;
+  overflow: hidden;
 }
 
 .section-vis.section-shaded,
@@ -200,92 +195,85 @@ body {
 .section-intro-centered {
   text-align: center;
   max-width: var(--prose-w);
-  margin: 0 auto 36px;
+  margin: 0 auto 40px;
 }
-
-.section-intro-centered .section-heading { margin-bottom: 14px; }
 
 /* ── Section: Two Column ──────────────────────────────────── */
 .section-two-col {
   padding: var(--section-gap) 0;
+  overflow: hidden;
 }
 
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px 64px;
-  align-items: start;
+  gap: 48px 64px;
+  align-items: center; /* vertically centre text next to chart */
 }
 
 .col-text {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  padding-top: 4px;
 }
 
-/* ── Closing Section ──────────────────────────────────────── */
-.section-closing {
-  background: var(--cream-dark);
-  border-top: 1px solid var(--cream-mid);
-  border-bottom: 1px solid var(--cream-mid);
-}
+/* ── Typography — unified serif headings ─────────────────── */
 
-.closing-ornament {
-  font-size: 28px;
-  color: var(--accent);
-  margin-bottom: 24px;
-}
-
-/* ── Typography ───────────────────────────────────────────── */
+/* Page-level h2 used in section-centered: large, serif, centered */
 .section-heading {
   font-family: var(--font-serif);
-  font-size: clamp(22px, 2.8vw, 30px);
+  font-size: clamp(22px, 2.8vw, 32px);
   font-weight: 700;
   color: var(--brown-1);
   line-height: 1.2;
   letter-spacing: -0.01em;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
-.section-desc {
-  font-size: 15.5px;
-  color: var(--brown-2);
-  line-height: 1.75;
+/* Vis label — small caps above heading */
+.vis-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  display: block;
 }
 
+/* Body copy */
+.section-desc,
 .col-text p,
 .container-narrow p {
   font-size: 15.5px;
   color: var(--brown-2);
-  line-height: 1.75;
+  line-height: 1.8;
 }
 
 .col-text p strong,
-.container-narrow p strong {
+.container-narrow p strong,
+.section-desc strong {
   color: var(--brown-1);
   font-weight: 600;
-}
-
-/* ── Vis Label ────────────────────────────────────────────── */
-.vis-label {
-  font-size: 11.5px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--brown-4);
-  text-transform: uppercase;
-  margin-bottom: 16px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--cream-mid);
 }
 
 /* ── Vis Container ────────────────────────────────────────── */
 .vis-container {
   width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .vis-container .vega-embed {
   width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Force Vega canvases to not overflow */
+.vis-container canvas,
+.vis-container svg {
+  max-width: 100% !important;
+  height: auto !important;
 }
 
 /* Vega tooltip */
@@ -307,30 +295,12 @@ body {
 }
 
 /* ── Stats ────────────────────────────────────────────────── */
-.stat-strip {
-  display: flex;
-  gap: 0;
-  border: 1px solid var(--cream-mid);
-  border-radius: 8px;
-  overflow: hidden;
-  margin: 32px 0 0;
-}
-
-.stat-strip .stat-item {
-  flex: 1;
-  padding: 20px 16px;
-  border-right: 1px solid var(--cream-mid);
-  text-align: center;
-}
-
-.stat-strip .stat-item:last-child { border-right: none; }
-
 .stat-pair {
   display: flex;
-  gap: 24px;
-  padding: 20px 0;
+  gap: 28px;
+  padding: 18px 0 4px;
   border-top: 1px solid var(--cream-mid);
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
 .stat-item {
@@ -341,7 +311,7 @@ body {
 
 .stat-num {
   font-family: var(--font-serif);
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 700;
   color: var(--accent);
   line-height: 1;
@@ -357,15 +327,15 @@ body {
 
 /* ── Pullquote ────────────────────────────────────────────── */
 .pullquote {
-  padding: 18px 20px 18px 24px;
+  padding: 16px 18px 16px 22px;
   border-left: 3px solid var(--accent);
   background: var(--cream-dark);
   border-radius: 0 6px 6px 0;
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 15.5px;
+  font-size: 15px;
   color: var(--brown-2);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 /* ── Footer ───────────────────────────────────────────────── */
@@ -389,6 +359,7 @@ body {
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 18px;
+  display: block;
 }
 
 .footer-list {
@@ -425,7 +396,6 @@ body {
   border-bottom: 1px solid transparent;
   transition: border-color 0.2s;
 }
-
 .footer-body a:hover { border-bottom-color: var(--accent); }
 
 .footer-copy {
@@ -444,14 +414,9 @@ body {
     gap: 32px;
   }
 
-  .stat-strip {
-    flex-wrap: wrap;
-  }
-
-  .stat-strip .stat-item {
-    flex: 1 1 45%;
-    border-bottom: 1px solid var(--cream-mid);
-  }
+  /* On mobile keep text before chart for both column orders */
+  .grid-2 .col-chart { order: 2; }
+  .grid-2 .col-text  { order: 1; }
 
   .footer-grid {
     grid-template-columns: 1fr;
@@ -463,8 +428,9 @@ body {
 
 @media (max-width: 560px) {
   .hero-title { font-size: 52px; }
-  .container-wide { padding: 0 18px; }
+  .container-wide  { padding: 0 18px; }
   .container-narrow { padding: 0 18px; }
+  .chapter-label { white-space: normal; text-align: center; }
 }
 
 /* ── Scrollbar ────────────────────────────────────────────── */
@@ -474,3 +440,30 @@ body {
 
 /* ── Selection ────────────────────────────────────────────── */
 ::selection { background: var(--accent); color: var(--cream); }
+
+/* ── Narration block below chart ──────────────────────────── */
+.section-narration {
+  max-width: var(--prose-w);
+  margin: 36px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: left;
+}
+
+.section-narration p {
+  font-size: 15.5px;
+  color: var(--brown-2);
+  line-height: 1.8;
+}
+
+.section-narration p strong {
+  color: var(--brown-1);
+  font-weight: 600;
+}
+
+/* ── Narrow vis — centre chart and cap its width ─────────── */
+.vis-container--narrow {
+  max-width: 640px;
+  margin: 0 auto;
+}
