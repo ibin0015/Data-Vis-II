@@ -9,7 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <title>Australia &amp; Coffee — A Data Story</title>
 </head>
@@ -17,216 +17,281 @@
 
 <!-- ══════════════════════ HERO ══════════════════════ -->
 <header class="hero">
-  <div class="hero-overlay"></div>
   <div class="hero-inner">
-    <p class="hero-kicker">A Data Story &nbsp;·&nbsp; FIT2179 &nbsp;·&nbsp; Monash University &nbsp;·&nbsp; 2026</p>
+    <p class="hero-kicker">FIT2179 Data Visualisation &nbsp;·&nbsp; Monash University &nbsp;·&nbsp; 2026</p>
     <h1 class="hero-title">Australia<br><em>&amp; Coffee</em></h1>
-    <p class="hero-sub">From the farms of Brazil to the laneway cafés of Melbourne —<br>how a nation fell in love with the bean.</p>
+    <p class="hero-sub">From the farms of Brazil to the cups served in Melbourne laneways — a data story about how one nation fell in love with a bean.</p>
     <div class="hero-divider"></div>
+    <p class="hero-byline">A data visualisation by a FIT2179 student &nbsp;·&nbsp; June 2026</p>
   </div>
   <div class="hero-scroll">↓</div>
 </header>
 
 <main>
 
-  <!-- ══════════════ PART ONE ══════════════ -->
-  <div class="part-banner">
-    <div class="container">
-      <span class="part-label">Part One</span>
-      <h2 class="part-heading">The World in Your Cup</h2>
-      <p class="part-desc">Before a bean reaches an Australian café, it crosses oceans. Coffee is one of the most traded agricultural commodities on earth — and Australia sits at the end of a supply chain spanning more than 50 countries.</p>
-    </div>
+  <!-- ══════════════════════════════════════════════
+       CHAPTER 1 — WHERE THE BEAN COMES FROM
+  ══════════════════════════════════════════════ -->
+
+  <div class="chapter-divider">
+    <div class="chapter-line"></div>
+    <span class="chapter-label">Where does it come from?</span>
+    <div class="chapter-line"></div>
   </div>
 
-  <!-- Flow map — full width -->
-  <div class="section-full">
-    <div class="container">
-      <div class="section-header">
-        <h3 class="section-title">Where Australia's Coffee Comes From</h3>
-        <p class="section-desc">The map traces green coffee bean imports into Australia. A dense band across <strong>Latin America</strong> — Brazil, Colombia, Honduras — supplies over 60% of all imports. East Africa and South-East Asia fill the rest. Melbourne's café identity rests on a supply chain that could be disrupted by a drought on the other side of the world.</p>
-      </div>
+  <!-- Intro text: world supply chain -->
+  <section class="section-centered">
+    <div class="container-narrow">
+      <h2 class="section-heading">Every cup starts with a long journey</h2>
+      <p>Before any Australian lifts a flat white to their lips, that coffee has already crossed oceans. Australia imports green coffee beans from over <strong>50 countries</strong>, but the supply is far from evenly spread. A handful of nations — led by Brazil, Colombia and Honduras — supply the vast majority of what Australia drinks.</p>
+      <p>The map below shows exactly where those beans come from. The darker the country, the more it exports to Australia. What you see is a story of dependence: a dense band across Latin America provides over <strong>60% of all Australian coffee imports</strong>, with East Africa and South-East Asia making up most of the rest.</p>
+      <p>This matters because it creates vulnerability. A drought, a frost, or a political disruption in Minas Gerais, Brazil can drive up coffee prices felt in every café across Australia within a single season — and as we will see later, that is exactly what happened.</p>
+    </div>
+  </section>
+
+  <section class="section-vis section-shaded">
+    <div class="container-wide">
+      <div class="vis-label">Figure 1 — Origins of Australia's coffee imports, 2023</div>
       <div id="map_aus_imports_flow" class="vis-container"></div>
     </div>
-  </div>
+  </section>
 
-  <!-- Two col: bean preference + top exporters -->
-  <div class="section-two-col">
-    <div class="container grid-2">
+  <!-- Stat callouts: key import figures -->
+  <section class="section-centered">
+    <div class="container-narrow">
+      <div class="stat-strip">
+        <div class="stat-item">
+          <span class="stat-num">50+</span>
+          <span class="stat-label">countries Australia imports coffee from</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">~$430M</span>
+          <span class="stat-label">total value of coffee imports in 2023</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">~$112M</span>
+          <span class="stat-label">Brazil's share alone — 1 in every 4 dollars</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">60%+</span>
+          <span class="stat-label">supplied by just Brazil, Colombia and Honduras</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Arabica vs Robusta + top exporters -->
+  <section class="section-two-col">
+    <div class="container-wide grid-2">
 
       <div class="col-text">
-        <h3 class="section-title">Not All Beans Are Equal</h3>
-        <p>Two species dominate global supply: <strong>Arabica</strong> — mild, aromatic, favoured by specialty cafés — and <strong>Robusta</strong> — cheaper, bolder, dominant in instant coffee and espresso blends. The preference gap between them tells you everything about how Australia takes its coffee.</p>
-        <div class="stat-row">
-          <div class="stat-block">
+        <h2 class="section-heading">Not all coffee is the same</h2>
+        <p>Two species dominate the global coffee trade, and they serve very different purposes. <strong>Arabica</strong> is the bean of choice for specialty cafés — it is mild, aromatic, and the foundation of the flat white and latte culture that defines Australian coffee. <strong>Robusta</strong> is cheaper, more bitter, and mostly ends up in instant coffee and commercial espresso blends.</p>
+        <p>Globally, Arabica makes up about 70% of total consumption — and Australia skews even higher than that average. The country's café scene is built almost entirely on Arabica, which is why events in Arabica-producing regions like Brazil and Colombia hit Australian prices so directly.</p>
+        <div class="stat-pair">
+          <div class="stat-item">
             <span class="stat-num">~70%</span>
-            <span class="stat-label">global consumption is Arabica</span>
+            <span class="stat-label">of global consumption is Arabica</span>
           </div>
-          <div class="stat-block">
+          <div class="stat-item">
             <span class="stat-num">~30%</span>
-            <span class="stat-label">Robusta — blends &amp; instant</span>
+            <span class="stat-label">Robusta — blends and instant coffee</span>
           </div>
         </div>
       </div>
 
       <div class="col-chart">
+        <div class="vis-label">Figure 2 — Coffee bean type preference</div>
         <div id="lollipop_bean_preference" class="vis-container"></div>
       </div>
 
       <div class="col-chart">
+        <div class="vis-label">Figure 3 — Top 10 global coffee exporters, 2025</div>
         <div id="bar_top_exporters" class="vis-container"></div>
       </div>
 
       <div class="col-text">
-        <h3 class="section-title">Top 10 Coffee Bean Exporters, 2025</h3>
-        <p><strong>Brazil</strong> leads with 37,000 thousand 60 kg bags — roughly 31% of global supply. Vietnam follows with 24,600 thousand bags of mostly Robusta. Together the top three countries account for nearly <strong>62% of all global exports</strong>.</p>
-        <p>Indonesia rises notably to fourth. African exporters Ethiopia and Uganda round out the top six, bringing high-quality Arabica varieties increasingly found on Australian café menus.</p>
-        <blockquote class="callout">"A crop failure in Minas Gerais, Brazil can send coffee prices across the world surging within a season."</blockquote>
+        <h2 class="section-heading">Brazil leads the world — by a wide margin</h2>
+        <p><strong>Brazil</strong> exports more green coffee than any other country — roughly 37,000 thousand 60 kg bags per year, or about 31% of the entire global supply. Vietnam is second with 24,600 thousand bags, mostly Robusta. Together, the top three countries — Brazil, Vietnam and Colombia — account for nearly <strong>62% of all global coffee exports</strong>.</p>
+        <p>Further down the list, Ethiopia and Uganda represent Africa's strong Arabica heritage. These are the high-quality, single-origin beans increasingly found on Australian specialty café menus.</p>
+        <blockquote class="pullquote">"A crop failure in Minas Gerais, Brazil can send coffee prices across the world surging within a season."</blockquote>
       </div>
 
     </div>
-  </div>
+  </section>
 
-  <!-- World consumption — full width -->
-  <div class="section-full section-shaded">
-    <div class="container">
-      <div class="section-header">
-        <h3 class="section-title">Coffee Consumption by Country</h3>
-        <p class="section-desc">The choropleth maps total consumption in 2023 — darker means more. The United States leads at 1.4 million tonnes, followed by Brazil and Germany. Australia sits at roughly <strong>47,000 tonnes</strong> — about 1.8 kg per person.</p>
+  <!-- World consumption map -->
+  <section class="section-vis section-shaded">
+    <div class="container-wide">
+      <div class="section-intro-centered">
+        <h2 class="section-heading">Who actually drinks it?</h2>
+        <p class="section-desc">The map below shows total coffee consumption by country in 2023. The United States leads at 1.4 million tonnes, followed by Brazil — remarkably, also one of the world's biggest consumers of its own export — and Germany. Australia sits at around <strong>47,000 tonnes</strong>, or about 1.8 kg per person per year. That number may seem modest compared to Europe, but it understates the cultural intensity of the Australian café scene, which is built on quality espresso rather than filter coffee volume.</p>
       </div>
+      <div class="vis-label">Figure 4 — Global coffee consumption by country, 2023</div>
       <div id="map_world_consumption" class="vis-container"></div>
     </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       CHAPTER 2 — HOW AUSTRALIA DRINKS IT
+  ══════════════════════════════════════════════ -->
+
+  <div class="chapter-divider">
+    <div class="chapter-line"></div>
+    <span class="chapter-label">How does Australia drink it?</span>
+    <div class="chapter-line"></div>
   </div>
 
-  <!-- ══════════════ PART TWO ══════════════ -->
-  <div class="part-banner">
-    <div class="container">
-      <span class="part-label">Part Two</span>
-      <h2 class="part-heading">The Culture</h2>
-      <p class="part-desc">The beans land in Australia and meet a country unlike most others. Nowhere here has turned coffee into quite such a defining feature of daily life — a ritual built suburb by suburb, state by state.</p>
-    </div>
-  </div>
-
-  <!-- Two col: pie + text -->
-  <div class="section-two-col">
-    <div class="container grid-2">
+  <!-- What Australia orders + donut -->
+  <section class="section-two-col">
+    <div class="container-wide grid-2">
 
       <div class="col-chart">
+        <div class="vis-label">Figure 5 — Favourite coffee types in Australia</div>
         <div id="pie_favourite_coffee" class="vis-container"></div>
       </div>
 
       <div class="col-text">
-        <h3 class="section-title">What Australia Orders</h3>
-        <p>Walk into any café and the story is clear: <strong>milk-based espresso drinks dominate</strong>. The latte leads at around 23%, with Americano with Milk and Cappuccino close behind. The flat white — an Australian invention that conquered London and New York — is not far off.</p>
-        <p>The "Others" category hints at growing curiosity for specialty drinks. Espresso and Cortado remain niche despite strong cultural roots in Italian-Australian communities.</p>
+        <h2 class="section-heading">The latte leads, but the flat white defines us</h2>
+        <p>Walk into any Australian café and the menu tells the same story: milk-based espresso drinks dominate. The latte is the most popular order at around 22–23%, but the <strong>flat white</strong> — invented in Australia and now served in coffee chains across London and New York — is right behind it.</p>
+        <p>The flat white is Australia's coffee identity. It is smaller and stronger than a latte, with a higher coffee-to-milk ratio, and it requires more barista skill to get right. Its popularity reflects a café culture that genuinely values quality over convenience.</p>
+        <p>At the other end of the chart, espresso and cortado remain niche despite their deep roots in Italian-Australian communities — a sign that for most Australians, coffee is still a milk drink first.</p>
       </div>
 
     </div>
-  </div>
+  </section>
 
-  <!-- Café dot map — full width -->
-  <div class="section-full section-shaded">
-    <div class="container">
-      <div class="section-header">
-        <h3 class="section-title">Australia's Café Footprint</h3>
-        <p class="section-desc">Each dot represents a cluster of cafés and restaurants, sized by the number of venues per state. <strong>NSW and Victoria dominate</strong>, together accounting for over 60% of all venues. The NT's sparse dot reflects both geography and population.</p>
+  <!-- Café dot map -->
+  <section class="section-vis section-shaded">
+    <div class="container-wide">
+      <div class="section-intro-centered">
+        <h2 class="section-heading">Where Australia's cafés are</h2>
+        <p class="section-desc">Each dot on the map below represents the café and restaurant count for a state, sized by the number of venues. The picture is striking: <strong>New South Wales and Victoria together account for over 60% of all venues</strong> in the country. The density reflects where Australia's population — and its café culture — is most concentrated. The Northern Territory's tiny dot, by contrast, shows how thinly spread café culture becomes once you leave the major population centres.</p>
       </div>
+      <div class="vis-label">Figure 6 — Cafés and restaurants per state, FY2024 (click a state to highlight)</div>
       <div id="map_aus_cafe_dots" class="vis-container"></div>
     </div>
-  </div>
+  </section>
 
-  <!-- Search popularity — full width -->
-  <div class="section-full">
-    <div class="container">
-      <div class="section-header">
-        <h3 class="section-title">How Australia Searches for Coffee</h3>
-        <p class="section-desc">Google Trends data from 2004 to 2026 tracks search interest in "coffee" and "café" across Australia. Steady baseline interest, seasonal peaks, a surge in specialty coffee interest from 2015, and a notable dip during COVID lockdowns of 2020.</p>
+  <!-- Search popularity -->
+  <section class="section-vis">
+    <div class="container-wide">
+      <div class="section-intro-centered">
+        <h2 class="section-heading">How search behaviour tells the story of coffee culture</h2>
+        <p class="section-desc">Google Trends data from 2004 to 2026 tracks how often Australians search for "coffee" and "café" online. The trend reveals something important: interest in coffee has not just stayed steady — it has grown. From around 2015 onward, search volume increased noticeably, coinciding with the rise of specialty coffee culture and third-wave cafés across the country. The dip in 2020 during COVID lockdowns is clearly visible, when cafés closed and the ritual moved home. But recovery was swift — within a year, search interest had returned to pre-pandemic levels, suggesting that for most Australians, the café experience is not easily replaced.</p>
       </div>
+      <div class="vis-label">Figure 7 — Google Trends: "coffee" and "café" search interest in Australia, 2004–2026</div>
       <div id="line_search_popularity" class="vis-container"></div>
     </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       CHAPTER 3 — WHAT IT COSTS
+  ══════════════════════════════════════════════ -->
+
+  <div class="chapter-divider">
+    <div class="chapter-line"></div>
+    <span class="chapter-label">What does it cost?</span>
+    <div class="chapter-line"></div>
   </div>
 
-  <!-- ══════════════ PART THREE ══════════════ -->
-  <div class="part-banner">
-    <div class="container">
-      <span class="part-label">Part Three</span>
-      <h2 class="part-heading">The Price of the Ritual</h2>
-      <p class="part-desc">Follow the bean all the way to the cup in your hand at 8am — and three things become clear: who drinks it, what it costs, and why the price keeps climbing.</p>
-    </div>
-  </div>
-
-  <!-- Caffeine bubble — full width -->
-  <div class="section-full section-shaded">
-    <div class="container">
-      <div class="section-header">
-        <h3 class="section-title">Caffeine Intake Across Generations</h3>
-        <p class="section-desc">Bubble size encodes each age group's share of total caffeine consumption from sweetened beverages. <strong>Young adults aged 18–29</strong> lead at 21 mg/day. Older Australians draw their caffeine from traditional brewed coffee rather than sweetened drinks.</p>
+  <!-- Caffeine bubble -->
+  <section class="section-vis section-shaded">
+    <div class="container-wide">
+      <div class="section-intro-centered">
+        <h2 class="section-heading">Who is drinking the most caffeine?</h2>
+        <p class="section-desc">The bubble chart below looks at caffeine intake from sweetened beverages by age group. The size of each bubble shows that group's share of total caffeine consumption. <strong>Young adults aged 18–29 consume the most</strong>, at around 21 mg per day from sweetened sources. But the data also shows something less expected: teenagers consume more caffeine than many assume, largely through energy drinks and sweetened coffee products rather than traditional espresso. Older Australians, by contrast, tend to get their caffeine from plain brewed coffee — a flat white or long black — rather than sweetened drinks.</p>
       </div>
+      <div class="vis-label">Figure 8 — Daily caffeine intake from sweetened beverages by age group</div>
       <div id="bubble_caffeine_by_age" class="vis-container"></div>
     </div>
-  </div>
+  </section>
 
-  <!-- Two col: price bar + diverge -->
-  <div class="section-two-col">
-    <div class="container grid-2">
+  <!-- Green coffee price + flat white diverge -->
+  <section class="section-two-col">
+    <div class="container-wide grid-2">
 
       <div class="col-text">
-        <h3 class="section-title">The Rising Cost of Green Coffee</h3>
-        <p>The annual average price of green coffee beans — converted to AUD — tells a volatile story. The <strong>1977 Brazilian frost</strong>, the 1997 Asian demand boom, and the 2011 global commodity spike each drove sharp price surges.</p>
-        <p>The dashed trend line is unmistakably upward. A crop that cost under $1 AUD per pound in the early 2000s now exceeds $5. Drag the bottom navigator to zoom into any time period.</p>
+        <h2 class="section-heading">The rising cost of green coffee</h2>
+        <p>The price of raw green coffee beans, converted to Australian dollars, has been one of the most volatile commodity stories of the past 50 years. Three major events stand out clearly in the chart.</p>
+        <p>The <strong>1977 Brazilian frost</strong> wiped out a large portion of the world's coffee crop, sending prices to record highs almost overnight. The <strong>1997 Asian demand boom</strong> drove another surge as rapidly growing economies began drinking more coffee. Then came the <strong>2011 global commodity spike</strong>, which pushed prices to levels not seen since the 1970s.</p>
+        <p>But the most significant development is the long-run trend: a crop that cost under $1 AUD per pound in the early 2000s now routinely exceeds $5. Use the navigator at the bottom of the chart to zoom into any time period.</p>
       </div>
 
       <div class="col-chart">
+        <div class="vis-label">Figure 9 — Annual average green coffee bean price in Australia (AUD/lb), 1969–2024</div>
         <div id="bar_coffee_price_aud" class="vis-container"></div>
       </div>
 
       <div class="col-chart">
+        <div class="vis-label">Figure 10 — Average flat white price by state, deviation from national average ($4.99)</div>
         <div id="bar_flatwhite_state_diverge" class="vis-container"></div>
       </div>
 
       <div class="col-text">
-        <h3 class="section-title">What a Flat White Costs by State</h3>
-        <p><strong>Darwin leads at $5.35</strong>, almost $0.45 above the cheapest. New South Wales, despite hosting the most cafés in the country, comes in at $4.89. Victoria sits at exactly the national average of $4.99 — fitting for the state that defines Australia's coffee standard.</p>
-        <p>The NT premium reflects the cost of remote business: higher freight, fewer competitors, and a smaller customer base spreading fixed costs across fewer cups.</p>
+        <h2 class="section-heading">What a flat white costs depends on where you live</h2>
+        <p>The flat white is Australia's benchmark coffee — and its price is not the same everywhere. The chart on the left shows each state's average flat white price as a deviation from the national average of <strong>$4.99</strong>.</p>
+        <p><strong>The Northern Territory is the most expensive</strong>, at $5.34 — nearly $0.45 above New South Wales, which is the cheapest at $4.89. The NT premium is not about coffee snobbery. It reflects the simple economics of remote supply chains: higher freight costs, fewer competitors, and a smaller customer base spreading fixed costs across fewer cups sold each day.</p>
+        <p><strong>Victoria sits exactly at the national average</strong> — fitting for the state most associated with defining Australia's coffee culture. It is neither the cheapest nor the most expensive, but the standard against which others are measured.</p>
       </div>
 
     </div>
-  </div>
+  </section>
 
-  <!-- City strip chart — full width -->
-  <div class="section-full section-shaded">
-    <div class="container">
-      <div class="section-header">
-        <h3 class="section-title">Flat White Price, City by City</h3>
-        <p class="section-desc">Within states, prices are often consistent — suggesting state-level cost structures dominate local pricing. Darwin stands alone as the nation's priciest market; Sydney and the NSW cluster anchor the affordable end.</p>
+  <!-- City strip chart -->
+  <section class="section-vis section-shaded">
+    <div class="container-wide">
+      <div class="section-intro-centered">
+        <h2 class="section-heading">City by city: how flat white prices cluster by state</h2>
+        <p class="section-desc">Zoom further in and an interesting pattern emerges. Within each state, city prices are remarkably consistent — Brisbane, Gold Coast, Sunshine Coast and Cairns all sit at exactly $5.03. Adelaide, Barossa Valley and Victor Harbor all share $5.13. This consistency tells us that pricing is driven by <strong>state-level factors</strong> — wages, rent, supply logistics — rather than individual city dynamics. The one clear outlier is Darwin and Alice Springs in the NT, which stand alone at $5.35, well above every other city in the country. Hover over any dot to see the city name and price.</p>
       </div>
+      <div class="vis-label">Figure 11 — Average flat white price by city, grouped by state</div>
       <div id="strip_flatwhite_by_city" class="vis-container"></div>
     </div>
-  </div>
+  </section>
+
+  <!-- Closing narrative -->
+  <section class="section-centered section-closing">
+    <div class="container-narrow">
+      <div class="closing-ornament">✦</div>
+      <h2 class="section-heading">From a farm in Brazil to a cup in Carlton</h2>
+      <p>The story of Australian coffee is ultimately a story about connection. Every flat white served in a Melbourne laneway café begins somewhere far away — most likely a plantation in Minas Gerais, Brazil, where the same soil that fuelled the 1977 price crisis is now the source of record-high 2024 prices.</p>
+      <p>Along the way, the bean passes through a global supply chain worth hundreds of millions of dollars, arrives in a country that has built an entire cultural identity around how it is prepared and served, and ends up in the hands of someone who will pay $5 for it without a second thought — until the price suddenly goes up.</p>
+      <p>That price, as this data shows, is not set by the café. It is set by weather patterns, trade volumes, exchange rates, and freight costs stretching back across the supply chain. Understanding that chain is what turns a simple coffee order into a data story.</p>
+    </div>
+  </section>
 
 </main>
 
 <!-- ══════════════ FOOTER ══════════════ -->
 <footer class="site-footer">
-  <div class="container footer-grid">
+  <div class="container-wide footer-grid">
+
     <div class="footer-col">
-      <p class="footer-label">Sources</p>
+      <p class="footer-label">Data Sources</p>
       <ul class="footer-list">
-        <li>UN Comtrade via World Bank WITS (2023)</li>
-        <li>ICO Commodity Prices — green coffee bean</li>
-        <li>Australian Bureau of Statistics, 2023</li>
-        <li>Statista — Café &amp; Restaurant data, FY2024</li>
-        <li>Google Trends — Australia, 2004–2026</li>
-        <li>smallflatwhite.com — flat white price index</li>
-        <li>RBA — historical USD/AUD exchange rates</li>
+        <li>UN Comtrade via World Bank WITS — coffee import data, 2023 (HS code 090111)</li>
+        <li>International Coffee Organization (ICO) — commodity prices, green coffee bean</li>
+        <li>Australian Bureau of Statistics — consumption and CPI data, 2023</li>
+        <li>Statista — café and restaurant venue counts by state, FY2024</li>
+        <li>Google Trends — Australia-wide search interest, 2004–2026</li>
+        <li>smallflatwhite.com — flat white price index by state and city</li>
+        <li>Reserve Bank of Australia — historical USD/AUD exchange rates</li>
       </ul>
     </div>
+
     <div class="footer-col">
-      <p class="footer-label">About</p>
-      <p class="footer-body">Built with <a href="https://vega.github.io/vega-lite/" target="_blank">Vega-Lite v5</a> and hand-crafted HTML/CSS. Part of FIT2179 Data Visualisation at Monash University, 2026. AI (Anthropic Claude) assisted with specification debugging; all data is real and drawn from cited sources.</p>
+      <p class="footer-label">About This Project</p>
+      <p class="footer-body">This visualisation was created as part of <strong>FIT2179 Data Visualisation</strong> at Monash University, Semester 1, 2026. All data is drawn from the cited sources above and has not been fabricated or altered. Charts are built with <a href="https://vega.github.io/vega-lite/" target="_blank">Vega-Lite v5</a>.</p>
+      <p class="footer-body" style="margin-top:12px;"><strong>Use of AI:</strong> Anthropic's Claude assisted with Vega-Lite specification debugging and narrative drafting. All analytical and design decisions were made by the author.</p>
+      <p class="footer-body" style="margin-top:12px;"><strong>Author:</strong> FIT2179 Student &nbsp;·&nbsp; Monash University &nbsp;·&nbsp; June 2026</p>
     </div>
+
   </div>
-  <div class="container">
-    <p class="footer-copy">© 2026 &nbsp;·&nbsp; FIT2179 Data Visualisation &nbsp;·&nbsp; Monash University</p>
+  <div class="container-wide">
+    <p class="footer-copy">© 2026 &nbsp;·&nbsp; FIT2179 Data Visualisation &nbsp;·&nbsp; Monash University &nbsp;·&nbsp; Built with Vega-Lite v5</p>
   </div>
 </footer>
 
