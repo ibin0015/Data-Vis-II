@@ -1,0 +1,73 @@
+body *{
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+    font-weight: 900;
+}
+
+body {
+    background-color: white;
+}
+
+.page {
+    width: 1000px;
+    background-color: #eeca98;
+    margin: auto;
+    padding: 50px;
+    padding-top: 35px;
+}
+
+.page-title {
+    text-align: center;
+}
+
+.page-title ~ img {
+    width: 100%;
+    display: block;
+}
+
+.vis-container {
+    width: 100%;
+    margin: auto
+}
+
+.description h2,
+h1 {
+    margin-top: 0px;
+}
+
+.description-right {
+    padding-left: 20px;
+}
+
+.description-left {
+    padding-right: 20px;
+}
+
+.description p {
+    text-align: justify;
+}
+
+.pure-g {
+    margin-bottom: 40px;
+}
+
+.small-font {
+    font-size: 14px;
+}
+
+#bar_chart {
+    display: flex;
+}
+
+#bar_chart2 {
+    display: flex;
+    justify-content: center;
+}
+
+#lollipop_chart {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+}

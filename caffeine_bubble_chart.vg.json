@@ -1,0 +1,347 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Caffeine Intake by Age Group",
+    "subtitle": "Bubble size = % of total caffeine intake | Error bars = 95% CI | Australia, 2023",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#7B5E3A",
+    "anchor": "start",
+    "offset": 10,
+    "color": "#3B1F0A"
+  },
+  "width": 720,
+  "height": 460,
+  "data": {
+    "url": "Data/caffeine_intake.csv"
+  },
+  "transform": [
+    { "filter": "datum.age_group !== '2-4'" }
+  ],
+  "layer": [
+
+    {
+      "mark": {
+        "type": "errorbar",
+        "ticks": true,
+        "color": "#C4A882",
+        "thickness": 1.8,
+        "tickSize": 6
+      },
+      "encoding": {
+        "x": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": ["5-11","12-17","18-29","30-49","50-64","65-74","75+"]
+        },
+        "y": { "field": "ci_low_mg", "type": "quantitative" },
+        "y2": { "field": "ci_high_mg" }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "point",
+        "shape": "circle",
+        "filled": true,
+        "opacity": 0.88,
+        "stroke": "#FDF6EE",
+        "strokeWidth": 1.8
+      },
+      "encoding": {
+        "x": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": ["5-11","12-17","18-29","30-49","50-64","65-74","75+"],
+          "axis": {
+            "title": "Age Group (years)",
+            "labelFontSize": 12,
+            "titleFontSize": 13,
+            "titlePadding": 10,
+            "labelColor": "#4A2C0A",
+            "titleColor": "#4A2C0A"
+          }
+        },
+        "y": {
+          "field": "avg_caffeine_mg",
+          "type": "quantitative",
+          "axis": {
+            "title": "Avg. Daily Caffeine Intake (mg)",
+            "labelFontSize": 12,
+            "titleFontSize": 13,
+            "titlePadding": 10,
+            "grid": true,
+            "gridDash": [4, 4],
+            "gridColor": "#E8D5BC",
+            "labelColor": "#4A2C0A",
+            "titleColor": "#4A2C0A"
+          },
+          "scale": { "domain": [0, 32] }
+        },
+        "size": {
+          "field": "proportion_pct",
+          "type": "quantitative",
+          "scale": { "range": [60, 2400] },
+          "legend": {
+            "title": "% of Total Caffeine Intake",
+            "titleFontSize": 11,
+            "labelFontSize": 10,
+            "titleColor": "#3B1F0A",
+            "labelColor": "#4A2C0A",
+            "symbolFillColor": "#8B5A2B",
+            "values": [5, 15, 25, 38]
+          }
+        },
+        "color": { "value": "#8B5A2B" },
+        "tooltip": [
+          { "field": "age_group", "title": "Age Group" },
+          { "field": "avg_caffeine_mg", "title": "Avg Caffeine (mg)", "format": ".0f" },
+          { "field": "ci_low_mg", "title": "CI Low (mg)" },
+          { "field": "ci_high_mg", "title": "CI High (mg)" },
+          { "field": "proportion_pct", "title": "% of Total Intake", "format": ".1f" }
+        ]
+      }
+    },
+
+    {
+      "mark": {
+        "type": "rule",
+        "strokeDash": [4, 3],
+        "strokeWidth": 1.2,
+        "color": "#8B5A2B",
+        "opacity": 0.7
+      },
+      "transform": [{ "filter": "datum.age_group === '12-17'" }],
+      "encoding": {
+        "x": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": ["5-11","12-17","18-29","30-49","50-64","65-74","75+"]
+        },
+        "y": { "value": 80 },
+        "y2": { "value": 190 }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 10.5,
+        "fontWeight": "bold",
+        "color": "#5C2E00",
+        "align": "center",
+        "baseline": "bottom",
+        "dy": -8,
+        "lineBreak": "\n"
+      },
+      "transform": [{ "filter": "datum.age_group === '12-17'" }],
+      "encoding": {
+        "x": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": ["5-11","12-17","18-29","30-49","50-64","65-74","75+"]
+        },
+        "y": { "value": 80 },
+        "text": { "value": "Teens (12–17) consume\n16 mg/day — 5x more\nthan younger kids" }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "rule",
+        "strokeDash": [4, 3],
+        "strokeWidth": 1.2,
+        "color": "#8B5A2B",
+        "opacity": 0.7
+      },
+      "transform": [{ "filter": "datum.age_group === '18-29'" }],
+      "encoding": {
+        "x": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": ["5-11","12-17","18-29","30-49","50-64","65-74","75+"]
+        },
+        "y": { "value": 30 },
+        "y2": { "value": 110 }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 10.5,
+        "fontWeight": "bold",
+        "color": "#3B1005",
+        "align": "center",
+        "baseline": "bottom",
+        "dy": -8,
+        "lineBreak": "\n"
+      },
+      "transform": [{ "filter": "datum.age_group === '18-29'" }],
+      "encoding": {
+        "x": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": ["5-11","12-17","18-29","30-49","50-64","65-74","75+"]
+        },
+        "y": { "value": 30 },
+        "text": { "value": "☕ Young adults (18–29)\npeak at 21 mg/day —\nhighest of all ages" }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "rule",
+        "strokeDash": [4, 3],
+        "strokeWidth": 1.2,
+        "color": "#8B5A2B",
+        "opacity": 0.7
+      },
+      "transform": [{ "filter": "datum.age_group === '75+'" }],
+      "encoding": {
+        "x": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": ["5-11","12-17","18-29","30-49","50-64","65-74","75+"]
+        },
+        "y": { "value": 270 },
+        "y2": { "value": 340 }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#7B5E3A",
+        "align": "center",
+        "baseline": "bottom",
+        "dy": -8,
+        "lineBreak": "\n"
+      },
+      "transform": [{ "filter": "datum.age_group === '75+'" }],
+      "encoding": {
+        "x": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": ["5-11","12-17","18-29","30-49","50-64","65-74","75+"]
+        },
+        "y": { "value": 270 },
+        "text": { "value": "75+ average only\n3 mg/day — lowest\nof all age groups" }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "rule",
+        "strokeDash": [4, 3],
+        "strokeWidth": 1.2,
+        "color": "#8B5A2B",
+        "opacity": 0.7
+      },
+      "transform": [{ "filter": "datum.age_group === '5-11'" }],
+      "encoding": {
+        "x": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": ["5-11","12-17","18-29","30-49","50-64","65-74","75+"]
+        },
+        "y": { "value": 300 },
+        "y2": { "value": 390 }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#7B5E3A",
+        "align": "center",
+        "baseline": "bottom",
+        "dy": -8,
+        "lineBreak": "\n"
+      },
+      "transform": [{ "filter": "datum.age_group === '5-11'" }],
+      "encoding": {
+        "x": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": ["5-11","12-17","18-29","30-49","50-64","65-74","75+"]
+        },
+        "y": { "value": 300 },
+        "text": { "value": "Kids (5–11) average\njust 3 mg/day" }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "rule",
+        "strokeDash": [4, 3],
+        "strokeWidth": 1.2,
+        "color": "#8B5A2B",
+        "opacity": 0.7
+      },
+      "transform": [{ "filter": "datum.age_group === '30-49'" }],
+      "encoding": {
+        "x": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": ["5-11","12-17","18-29","30-49","50-64","65-74","75+"]
+        },
+        "y": { "value": 155 },
+        "y2": { "value": 220 }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#7B5E3A",
+        "align": "center",
+        "baseline": "bottom",
+        "dy": -8,
+        "lineBreak": "\n"
+      },
+      "transform": [{ "filter": "datum.age_group === '30-49'" }],
+      "encoding": {
+        "x": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": ["5-11","12-17","18-29","30-49","50-64","65-74","75+"]
+        },
+        "y": { "value": 155 },
+        "text": { "value": "Adults (30–49) steady\nat 15 mg/day" }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 9.5,
+        "fontStyle": "italic",
+        "color": "#9C7A56",
+        "align": "right",
+        "baseline": "top",
+        "lineBreak": "\n"
+      },
+      "data": { "values": [{}] },
+      "encoding": {
+        "x": { "value": 700 },
+        "y": { "value": 8 },
+        "text": { "value": "† Error bars show 95% confidence intervals.\nWhisker endpoints mark the lower and upper\nbounds of the estimated average caffeine intake.\nSource: Australian Bureau of Statistics, 2023" }
+      }
+    }
+
+  ],
+  "config": {
+    "background": "#FDF6EE",
+    "view": { "stroke": "transparent" },
+    "axis": {
+      "domainColor": "#C4A882",
+      "tickColor": "#C4A882"
+    },
+    "title": {
+      "color": "#3B1F0A",
+      "subtitleColor": "#7B5E3A"
+    }
+  }
+}

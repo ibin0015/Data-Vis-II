@@ -1,0 +1,1173 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Cafés & Restaurants in Australia by State (FY2024)",
+    "subtitle": "Dot size proportional to number of venues · Click a state to highlight · Source: Statista 2026",
+    "fontSize": 16,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#888",
+    "anchor": "start",
+    "offset": 12
+  },
+  "width": 800,
+  "height": 600,
+  "config": {
+    "background": "#f9f4ef",
+    "view": {
+      "stroke": "transparent"
+    }
+  },
+  "projection": {
+    "type": "mercator",
+    "center": [
+      134,
+      -28
+    ],
+    "scale": 800
+  },
+  "layer": [
+    {
+      "description": "Base geoshape — highlights on click",
+      "data": {
+        "url": "Data/aus_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "data"
+        }
+      },
+      "transform": [
+        {
+          "lookup": "properties.STATE_NAME",
+          "from": {
+            "data": {
+              "values": [
+                {
+                  "state": "New South Wales",
+                  "venues": 19227
+                },
+                {
+                  "state": "Victoria",
+                  "venues": 17937
+                },
+                {
+                  "state": "Queensland",
+                  "venues": 9038
+                },
+                {
+                  "state": "Western Australia",
+                  "venues": 4257
+                },
+                {
+                  "state": "South Australia",
+                  "venues": 2882
+                },
+                {
+                  "state": "Australian Capital Territory",
+                  "venues": 1108
+                },
+                {
+                  "state": "Tasmania",
+                  "venues": 1037
+                },
+                {
+                  "state": "Northern Territory",
+                  "venues": 243
+                }
+              ]
+            },
+            "key": "state",
+            "fields": [
+              "state",
+              "venues"
+            ]
+          }
+        }
+      ],
+      "params": [
+        {
+          "name": "state_select",
+          "select": {
+            "type": "point",
+            "fields": [
+              "state"
+            ],
+            "on": "click",
+            "toggle": true
+          }
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#6F4E37",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "fill": {
+          "condition": {
+            "param": "state_select",
+            "empty": false,
+            "value": "#c8955e"
+          },
+          "value": "#ede0d4"
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "title": "State"
+          },
+          {
+            "field": "venues",
+            "title": "Venues",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "description": "Leader — NSW",
+      "data": {
+        "values": [
+          {
+            "lon": 149.5,
+            "lat": -32.5,
+            "lon2": 154.8,
+            "lat2": -25.3
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "strokeDash": [
+          5,
+          4
+        ],
+        "color": "#6F4E37",
+        "opacity": 0.6,
+        "strokeWidth": 1.1
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "longitude2": {
+          "field": "lon2"
+        },
+        "latitude2": {
+          "field": "lat2"
+        }
+      }
+    },
+    {
+      "description": "Leader — QLD",
+      "data": {
+        "values": [
+          {
+            "lon": 146.5,
+            "lat": -22.5,
+            "lon2": 155.5,
+            "lat2": -16.0
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "strokeDash": [
+          5,
+          4
+        ],
+        "color": "#6F4E37",
+        "opacity": 0.6,
+        "strokeWidth": 1.1
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "longitude2": {
+          "field": "lon2"
+        },
+        "latitude2": {
+          "field": "lat2"
+        }
+      }
+    },
+    {
+      "description": "Leader — NT",
+      "data": {
+        "values": [
+          {
+            "lon": 133.0,
+            "lat": -19.5,
+            "lon2": 124.0,
+            "lat2": -19.2
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "strokeDash": [
+          5,
+          4
+        ],
+        "color": "#6F4E37",
+        "opacity": 0.6,
+        "strokeWidth": 1.1
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "longitude2": {
+          "field": "lon2"
+        },
+        "latitude2": {
+          "field": "lat2"
+        }
+      }
+    },
+    {
+      "description": "Leader — VIC",
+      "data": {
+        "values": [
+          {
+            "lon": 144.5,
+            "lat": -37.5,
+            "lon2": 134.2,
+            "lat2": -41.6
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "strokeDash": [
+          5,
+          4
+        ],
+        "color": "#6F4E37",
+        "opacity": 0.6,
+        "strokeWidth": 1.1
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "longitude2": {
+          "field": "lon2"
+        },
+        "latitude2": {
+          "field": "lat2"
+        }
+      }
+    },
+    {
+      "description": "Box — NSW",
+      "data": {
+        "values": [
+          {
+            "lon": 154.8,
+            "lat": -26.5
+          }
+        ]
+      },
+      "mark": {
+        "type": "rect",
+        "width": 190,
+        "height": 62,
+        "color": "#fffaf7",
+        "stroke": "#c9a882",
+        "strokeWidth": 1.0,
+        "opacity": 1
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "description": "Box — QLD",
+      "data": {
+        "values": [
+          {
+            "lon": 155.5,
+            "lat": -17.2
+          }
+        ]
+      },
+      "mark": {
+        "type": "rect",
+        "width": 190,
+        "height": 62,
+        "color": "#fffaf7",
+        "stroke": "#c9a882",
+        "strokeWidth": 1.0,
+        "opacity": 1
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "description": "Box — NT",
+      "data": {
+        "values": [
+          {
+            "lon": 122.5,
+            "lat": -19.2
+          }
+        ]
+      },
+      "mark": {
+        "type": "rect",
+        "width": 175,
+        "height": 62,
+        "color": "#fffaf7",
+        "stroke": "#c9a882",
+        "strokeWidth": 1.0,
+        "opacity": 1
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "description": "Box — VIC",
+      "data": {
+        "values": [
+          {
+            "lon": 130.7,
+            "lat": -41.6
+          }
+        ]
+      },
+      "mark": {
+        "type": "rect",
+        "width": 200,
+        "height": 62,
+        "color": "#fffaf7",
+        "stroke": "#c9a882",
+        "strokeWidth": 1.0,
+        "opacity": 1
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "description": "NSW h",
+      "data": {
+        "values": [
+          {
+            "lon": 154.8,
+            "lat": -25.6,
+            "t": "NSW leads nationally"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 10.5,
+        "color": "#3b2212",
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    },
+    {
+      "description": "NSW l1",
+      "data": {
+        "values": [
+          {
+            "lon": 154.8,
+            "lat": -26.5,
+            "t": "19,227 venues — ~34% of all"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 9.5,
+        "color": "#6b4226"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    },
+    {
+      "description": "NSW l2",
+      "data": {
+        "values": [
+          {
+            "lon": 154.8,
+            "lat": -27.4,
+            "t": "Australian cafés & restaurants"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 9.5,
+        "color": "#6b4226"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    },
+    {
+      "description": "QLD h",
+      "data": {
+        "values": [
+          {
+            "lon": 155.5,
+            "lat": -16.3,
+            "t": "QLD: fastest growing"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 10.5,
+        "color": "#3b2212",
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    },
+    {
+      "description": "QLD l1",
+      "data": {
+        "values": [
+          {
+            "lon": 155.5,
+            "lat": -17.2,
+            "t": "9,038 venues; strongest"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 9.5,
+        "color": "#6b4226"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    },
+    {
+      "description": "QLD l2",
+      "data": {
+        "values": [
+          {
+            "lon": 155.5,
+            "lat": -18.099999999999998,
+            "t": "YoY growth in FY2023–24"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 9.5,
+        "color": "#6b4226"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    },
+    {
+      "description": "NT h",
+      "data": {
+        "values": [
+          {
+            "lon": 122.5,
+            "lat": -18.349999999999998,
+            "t": "NT: thinnest scene"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 10.5,
+        "color": "#3b2212",
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    },
+    {
+      "description": "NT l1",
+      "data": {
+        "values": [
+          {
+            "lon": 122.5,
+            "lat": -19.2,
+            "t": "Only 243 venues across"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 9.5,
+        "color": "#6b4226"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    },
+    {
+      "description": "NT l2",
+      "data": {
+        "values": [
+          {
+            "lon": 122.5,
+            "lat": -20.05,
+            "t": "1.35 million km²"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 9.5,
+        "color": "#6b4226"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    },
+    {
+      "description": "VIC h",
+      "data": {
+        "values": [
+          {
+            "lon": 130.7,
+            "lat": -40.75,
+            "t": "Melbourne effect"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 10.5,
+        "color": "#3b2212",
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    },
+    {
+      "description": "VIC l1",
+      "data": {
+        "values": [
+          {
+            "lon": 130.7,
+            "lat": -41.6,
+            "t": "VIC rivals NSW despite far"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 9.5,
+        "color": "#6b4226"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    },
+    {
+      "description": "VIC l2",
+      "data": {
+        "values": [
+          {
+            "lon": 130.7,
+            "lat": -42.45,
+            "t": "smaller land area & population"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 9.5,
+        "color": "#6b4226"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    },
+    {
+      "description": "Proportional bubble dots",
+      "data": {
+        "values": [
+          {
+            "state": "New South Wales",
+            "venues": 19227,
+            "lon": 146.5,
+            "lat": -32.5
+          },
+          {
+            "state": "Victoria",
+            "venues": 17937,
+            "lon": 144.5,
+            "lat": -36.8
+          },
+          {
+            "state": "Queensland",
+            "venues": 9038,
+            "lon": 144.5,
+            "lat": -22.0
+          },
+          {
+            "state": "Western Australia",
+            "venues": 4257,
+            "lon": 121.5,
+            "lat": -26.0
+          },
+          {
+            "state": "South Australia",
+            "venues": 2882,
+            "lon": 135.5,
+            "lat": -30.0
+          },
+          {
+            "state": "Australian Capital Territory",
+            "venues": 1108,
+            "lon": 149.1,
+            "lat": -35.5
+          },
+          {
+            "state": "Tasmania",
+            "venues": 1037,
+            "lon": 146.5,
+            "lat": -42.0
+          },
+          {
+            "state": "Northern Territory",
+            "venues": 243,
+            "lon": 133.0,
+            "lat": -19.5
+          }
+        ]
+      },
+      "mark": {
+        "type": "circle",
+        "color": "#6F4E37",
+        "stroke": "#fff",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "venues",
+          "type": "quantitative",
+          "scale": {
+            "type": "sqrt",
+            "domain": [
+              0,
+              20000
+            ],
+            "range": [
+              80,
+              3200
+            ]
+          },
+          "legend": {
+            "title": "Number of Venues",
+            "orient": "bottom-right",
+            "values": [
+              100,
+              1000,
+              5000,
+              10000,
+              19000
+            ],
+            "labelExpr": "datum.value == 100 ? '100' : datum.value == 1000 ? '1,000' : datum.value == 5000 ? '5,000' : datum.value == 10000 ? '10,000' : '19,000'",
+            "symbolFillColor": "#6F4E37",
+            "symbolStrokeColor": "#fff",
+            "symbolStrokeWidth": 1,
+            "labelColor": "#555",
+            "titleColor": "#444",
+            "titleFontSize": 11,
+            "labelFontSize": 10,
+            "rowPadding": 6
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "state_select",
+            "empty": true,
+            "value": 0.85
+          },
+          "value": 0.18
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "title": "State"
+          },
+          {
+            "field": "venues",
+            "title": "Venues",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "description": "State name labels — white halo underneath",
+      "data": {
+        "values": [
+          {
+            "state": "New South Wales",
+            "venues": 19227,
+            "lon": 146.5,
+            "lat": -32.5
+          },
+          {
+            "state": "Victoria",
+            "venues": 17937,
+            "lon": 144.5,
+            "lat": -36.8
+          },
+          {
+            "state": "Queensland",
+            "venues": 9038,
+            "lon": 144.5,
+            "lat": -22.0
+          },
+          {
+            "state": "Western Australia",
+            "venues": 4257,
+            "lon": 121.5,
+            "lat": -26.0
+          },
+          {
+            "state": "South Australia",
+            "venues": 2882,
+            "lon": 135.5,
+            "lat": -30.0
+          },
+          {
+            "state": "Australian Capital Territory",
+            "venues": 1108,
+            "lon": 149.1,
+            "lat": -35.5
+          },
+          {
+            "state": "Tasmania",
+            "venues": 1037,
+            "lon": 146.5,
+            "lat": -42.0
+          },
+          {
+            "state": "Northern Territory",
+            "venues": 243,
+            "lon": 133.0,
+            "lat": -19.5
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "dy": -22,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "align": "center",
+        "fill": "transparent",
+        "stroke": "#ffffff",
+        "strokeWidth": 4,
+        "strokeOpacity": 1.0
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "state"
+        },
+        "opacity": {
+          "condition": {
+            "param": "state_select",
+            "empty": true,
+            "value": 1
+          },
+          "value": 0.25
+        }
+      }
+    },
+    {
+      "description": "State name labels — white halo for readability",
+      "data": {
+        "values": [
+          {
+            "state": "New South Wales",
+            "venues": 19227,
+            "lon": 146.5,
+            "lat": -32.5
+          },
+          {
+            "state": "Victoria",
+            "venues": 17937,
+            "lon": 144.5,
+            "lat": -36.8
+          },
+          {
+            "state": "Queensland",
+            "venues": 9038,
+            "lon": 144.5,
+            "lat": -22.0
+          },
+          {
+            "state": "Western Australia",
+            "venues": 4257,
+            "lon": 121.5,
+            "lat": -26.0
+          },
+          {
+            "state": "South Australia",
+            "venues": 2882,
+            "lon": 135.5,
+            "lat": -30.0
+          },
+          {
+            "state": "Australian Capital Territory",
+            "venues": 1108,
+            "lon": 149.1,
+            "lat": -35.5
+          },
+          {
+            "state": "Tasmania",
+            "venues": 1037,
+            "lon": 146.5,
+            "lat": -42.0
+          },
+          {
+            "state": "Northern Territory",
+            "venues": 243,
+            "lon": 133.0,
+            "lat": -19.5
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "dy": -22,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#6F4E37",
+        "align": "center"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "state"
+        },
+        "opacity": {
+          "condition": {
+            "param": "state_select",
+            "empty": true,
+            "value": 1
+          },
+          "value": 0.25
+        }
+      }
+    },
+    {
+      "description": "Venue count inside each bubble",
+      "data": {
+        "values": [
+          {
+            "state": "New South Wales",
+            "venues": 19227,
+            "lon": 146.5,
+            "lat": -32.5
+          },
+          {
+            "state": "Victoria",
+            "venues": 17937,
+            "lon": 144.5,
+            "lat": -36.8
+          },
+          {
+            "state": "Queensland",
+            "venues": 9038,
+            "lon": 144.5,
+            "lat": -22.0
+          },
+          {
+            "state": "Western Australia",
+            "venues": 4257,
+            "lon": 121.5,
+            "lat": -26.0
+          },
+          {
+            "state": "South Australia",
+            "venues": 2882,
+            "lon": 135.5,
+            "lat": -30.0
+          },
+          {
+            "state": "Australian Capital Territory",
+            "venues": 1108,
+            "lon": 149.1,
+            "lat": -35.5
+          },
+          {
+            "state": "Tasmania",
+            "venues": 1037,
+            "lon": 146.5,
+            "lat": -42.0
+          },
+          {
+            "state": "Northern Territory",
+            "venues": 243,
+            "lon": 133.0,
+            "lat": -19.5
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "dy": 0,
+        "fontSize": 9,
+        "color": "#fff",
+        "align": "center",
+        "baseline": "middle"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "venues",
+          "type": "quantitative",
+          "format": ","
+        },
+        "opacity": {
+          "condition": {
+            "param": "state_select",
+            "empty": true,
+            "value": 1
+          },
+          "value": 0.15
+        }
+      }
+    }
+  ]
+}

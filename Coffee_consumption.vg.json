@@ -1,0 +1,146 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Coffee Consumption by Country (2023)",
+    "fontSize": 16,
+    "font": "Georgia",
+    "anchor": "middle"
+  },
+  "width": 825,
+  "height": 400,
+  "projection": {"type": "equalEarth"},
+  "layer": [
+    {
+      "data": {
+        "url": "js/ne_110m_admin_0_countries.topojson",
+        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+      },
+      "mark": {"type": "geoshape", "fill": "#c4bba8", "stroke": "white"}
+    },
+    {
+      "data": {
+        "url": "js/ne_110m_admin_0_countries.topojson",
+        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+      },
+      "transform": [
+        {
+          "calculate": "datum.properties.NAME == 'United States of America' ? 'United States' : datum.properties.NAME == 'Bosnia and Herz.' ? 'Bosnia and Herzegovina' : datum.properties.NAME == 'Dem. Rep. Congo' ? 'DR Congo' : datum.properties.NAME == 'Dominican Rep.' ? 'Dominican Republic' : datum.properties.NAME == 'eSwatini' ? 'Eswatini' : datum.properties.NAME == 'Macedonia' ? 'North Macedonia' : datum.properties.NAME == 'Solomon Is.' ? 'Solomon Islands' : datum.properties.NAME",
+          "as": "country_name"
+        },
+        {
+          "lookup": "country_name",
+          "from": {
+            "data": {
+              "url": "Data/coffee-consumption-by-country-2026.csv"
+            },
+            "key": "country",
+            "fields": ["CoffeeConsumptionTotal_2023", "CoffeeConsumptionRateCountries_2023"]
+          }
+        },
+        {
+          "calculate": "datum.CoffeeConsumptionTotal_2023 / 1000",
+          "as": "Consumption (thousand tonnes)"
+        },
+        {
+          "filter": "datum.CoffeeConsumptionTotal_2023 > 0"
+        }
+      ],
+      "mark": {"type": "geoshape", "stroke": "white"},
+      "encoding": {
+        "color": {
+          "field": "Consumption (thousand tonnes)",
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain": [50, 200, 500, 1000],
+            "range": ["#fdf3e7", "#e8b88a", "#c67c3a", "#7b3f00", "#3d1c02"]
+          },
+          "legend": {
+            "title": "Consumption (k tonnes)",
+            "values": [50, 200, 500, 1000]
+          }
+        },
+        "tooltip": [
+          {"field": "country_name", "type": "nominal", "title": "Country"},
+          {"field": "CoffeeConsumptionTotal_2023", "type": "quantitative", "title": "Total (tonnes)", "format": ","},
+          {"field": "CoffeeConsumptionRateCountries_2023", "type": "quantitative", "title": "Per Capita (kg/person)", "format": ".2f"}
+        ]
+      }
+    },
+    {
+      "data": {"values": [{}]},
+      "transform": [
+        {
+          "calculate": "'Country with the highest; coffee consumption: ;United States;1,431,000 tonnes'",
+          "as": "text_annotation_raw"
+        },
+        {
+          "calculate": "split(datum.text_annotation_raw, ';')",
+          "as": "text_annotation"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -250,
+        "dy": -50,
+        "baseline": "middle",
+        "fontStyle": "italic",
+        "fontSize": 11
+      },
+      "encoding": {
+        "text": {"field": "text_annotation"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"lon_start": 148, "lat_start": -22, "lon_end": 134, "lat_end": -27}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "strokeDash": [4, 3],
+        "strokeWidth": 1.5,
+        "color": "#3d1c02"
+      },
+      "encoding": {
+        "longitude": {"field": "lon_start", "type": "quantitative"},
+        "latitude": {"field": "lat_start", "type": "quantitative"},
+        "longitude2": {"field": "lon_end"},
+        "latitude2": {"field": "lat_end"}
+      }
+    },
+    {
+      "data": {
+        "values": [{"longitude": 149, "latitude": -21}]
+      },
+      "transform": [
+        {
+          "calculate": "'Australia; ~47,000 tonnes;(~1.8 kg/person)'",
+          "as": "text_annotation_raw"
+        },
+        {
+          "calculate": "split(datum.text_annotation_raw, ';')",
+          "as": "aus_annotation"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 5,
+        "dy": 0,
+        "baseline": "middle",
+        "fontStyle": "italic",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#3d1c02"
+      },
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "text": {"field": "aus_annotation"}
+      }
+    }
+  ]
+}

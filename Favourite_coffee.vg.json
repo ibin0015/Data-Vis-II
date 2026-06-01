@@ -1,0 +1,253 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Favourite Coffee Types",
+    "fontSize": 16,
+    "color": "#3B1F0A",
+    "subtitleColor": "#7B5E3A",
+    "anchor": "start"
+  },
+  "width": 340,
+  "height": 340,
+  "data": {
+    "url": "Data/favourite_coffee.csv"
+  },
+  "transform": [
+    {
+      "calculate": "indexof(['Espresso','Americano','Americano with Milk','Latte','Cappuccino','Cortado'], datum.coffee_name) >= 0 ? datum.coffee_name : 'Others'",
+      "as": "coffee_category"
+    },
+    {
+      "aggregate": [
+        {
+          "op": "count",
+          "as": "count"
+        }
+      ],
+      "groupby": [
+        "coffee_category"
+      ]
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "count",
+          "as": "total"
+        }
+      ]
+    },
+    {
+      "calculate": "datum.count / datum.total",
+      "as": "percentage"
+    },
+    {
+      "calculate": "datum.coffee_category === 'Others' ? 0 : datum.percentage",
+      "as": "sort_order"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "arc",
+        "outerRadius": 140,
+        "innerRadius": 52,
+        "stroke": "#FDF6EE",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "theta": {
+          "field": "percentage",
+          "type": "quantitative",
+          "sort": {
+            "field": "sort_order",
+            "order": "descending"
+          }
+        },
+        "color": {
+          "field": "coffee_category",
+          "type": "nominal",
+          "sort": {
+            "field": "sort_order",
+            "order": "descending"
+          },
+          "scale": {
+            "domain": [
+              "Latte",
+              "Cappuccino",
+              "Espresso",
+              "Americano with Milk",
+              "Americano",
+              "Cortado",
+              "Others"
+            ],
+            "range": [
+              "#3B1005",
+              "#6B3A1F",
+              "#8B5A2B",
+              "#A67C52",
+              "#C4A882",
+              "#DCC9A8",
+              "#EDE0CC"
+            ]
+          },
+          "legend": {
+            "title": null,
+            "orient": "right",
+            "labelFontSize": 11,
+            "labelColor": "#4A2C0A",
+            "symbolSize": 120,
+            "symbolStrokeWidth": 0,
+            "offset": 16
+          }
+        },
+        "order": {
+          "field": "sort_order",
+          "sort": "descending"
+        },
+        "tooltip": [
+          {
+            "field": "coffee_category",
+            "title": "Coffee"
+          },
+          {
+            "field": "percentage",
+            "title": "Share",
+            "format": ".1%"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "radius": 168,
+        "fontSize": 10.5,
+        "fontWeight": "bold",
+        "color": "#4A2C0A"
+      },
+      "encoding": {
+        "theta": {
+          "field": "percentage",
+          "type": "quantitative",
+          "sort": {
+            "field": "sort_order",
+            "order": "descending"
+          },
+          "stack": true
+        },
+        "text": {
+          "condition": {
+            "test": "datum.percentage >= 0.08",
+            "field": "percentage",
+            "type": "quantitative",
+            "format": ".1%"
+          },
+          "value": ""
+        },
+        "order": {
+          "field": "sort_order",
+          "sort": "descending"
+        }
+      }
+    },
+    {
+      "description": "Annotation leader — diagonal down-right from slice",
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#8B5A2B",
+        "strokeWidth": 1.4,
+        "strokeDash": [
+          4,
+          3
+        ],
+        "opacity": 1
+      },
+      "encoding": {
+        "x": {
+          "value": 294
+        },
+        "y": {
+          "value": 140
+        },
+        "x2": {
+          "value": 380
+        },
+        "y2": {
+          "value": 210
+        }
+      }
+    },
+    {
+      "description": "Annotation leader — vertical down to text level",
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#8B5A2B",
+        "strokeWidth": 1.4,
+        "strokeDash": [
+          4,
+          3
+        ],
+        "opacity": 1
+      },
+      "encoding": {
+        "x": {
+          "value": 380
+        },
+        "y": {
+          "value": 210
+        },
+        "x2": {
+          "value": 380
+        },
+        "y2": {
+          "value": 245
+        }
+      }
+    },
+    {
+      "description": "Annotation text — Americano with Milk",
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 10.5,
+        "fontWeight": "bold",
+        "color": "#6B3A1F",
+        "align": "left",
+        "baseline": "top",
+        "lineBreak": "\n"
+      },
+      "encoding": {
+        "x": {
+          "value": 355
+        },
+        "y": {
+          "value": 247
+        },
+        "text": {
+          "value": "Most ordered —\nAmericano with Milk (22.7%)"
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "#FDF6EE",
+    "view": {
+      "stroke": "transparent"
+    }
+  }
+}

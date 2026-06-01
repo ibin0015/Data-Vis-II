@@ -1,0 +1,65 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Top 10 Coffee Bean Exporters 2025"
+  },
+  "width": 380,
+  "data": {
+    "url": "Data/CoffeeBeanExports_2025.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum['Rank'] <= 10"
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "Bean Exports (1000 x 60kg Bags)",
+          "as": "total"
+        }
+      ]
+    },
+    {
+      "calculate": "datum['Bean Exports (1000 x 60kg Bags)'] / datum.total",
+      "as": "percentage"
+    }
+  ],
+  "mark": {
+    "type": "bar",
+    "tooltip": true,
+    "color": "#A0522D"
+  },
+  "encoding": {
+    "y": {
+      "field": "Country",
+      "type": "nominal",
+      "title": "Country",
+      "sort": {
+        "field": "Bean Exports (1000 x 60kg Bags)",
+        "order": "descending"
+      }
+    },
+    "x": {
+      "field": "Bean Exports (1000 x 60kg Bags)",
+      "type": "quantitative",
+      "title": "Bean Exports (1,000 × 60 kg bags)"
+    },
+    "tooltip": [
+      {
+        "field": "Country",
+        "title": "Country"
+      },
+      {
+        "field": "Bean Exports (1000 x 60kg Bags)",
+        "title": "Exports (1,000 × 60kg bags)",
+        "format": ",.0f"
+      },
+      {
+        "field": "percentage",
+        "title": "Share",
+        "format": ".1%"
+      }
+    ]
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Average Flat White Price by City",
+    "subtitle": "Each dot = one city · Grouped by state · Hover for details · Source: smallflatwhite.com",
+    "fontSize": 16, "subtitleFontSize": 11,
+    "color": "#3B1F0A", "subtitleColor": "#7B5E3A",
+    "anchor": "start", "offset": 10
+  },
+  "width": 380,
+  "height": 480,
+  "config": {
+    "background": "#FDF6EE",
+    "view": { "stroke": "transparent" }
+  },
+  "data": {
+    "values": [
+      {"city":"Sydney",         "state":"NSW","price":4.90,"cafes":1642},
+      {"city":"Newcastle",      "state":"NSW","price":4.90,"cafes":1642},
+      {"city":"Central Coast",  "state":"NSW","price":4.90,"cafes":1642},
+      {"city":"Wollongong",     "state":"NSW","price":4.90,"cafes":1642},
+      {"city":"Coffs Harbour",  "state":"NSW","price":4.90,"cafes":1642},
+      {"city":"Port Macquarie", "state":"NSW","price":4.90,"cafes":1642},
+      {"city":"Wagga Wagga",    "state":"NSW","price":4.90,"cafes":1642},
+      {"city":"Tamworth",       "state":"NSW","price":4.90,"cafes":1642},
+      {"city":"Albury",         "state":"NSW","price":4.90,"cafes":1642},
+      {"city":"Byron Bay",      "state":"NSW","price":4.90,"cafes":1642},
+      {"city":"Melbourne",      "state":"VIC","price":5.00,"cafes":1157},
+      {"city":"Geelong",        "state":"VIC","price":5.00,"cafes":1157},
+      {"city":"Ballarat",       "state":"VIC","price":5.00,"cafes":1157},
+      {"city":"Bendigo",        "state":"VIC","price":5.00,"cafes":1157},
+      {"city":"Shepparton",     "state":"VIC","price":5.00,"cafes":1157},
+      {"city":"Mildura",        "state":"VIC","price":5.00,"cafes":1157},
+      {"city":"Canberra",       "state":"ACT","price":5.02,"cafes":163},
+      {"city":"Brisbane",       "state":"QLD","price":5.03,"cafes":1229},
+      {"city":"Gold Coast",     "state":"QLD","price":5.03,"cafes":1229},
+      {"city":"Sunshine Coast", "state":"QLD","price":5.03,"cafes":1229},
+      {"city":"Townsville",     "state":"QLD","price":5.03,"cafes":1229},
+      {"city":"Cairns",         "state":"QLD","price":5.03,"cafes":1229},
+      {"city":"Toowoomba",      "state":"QLD","price":5.03,"cafes":1229},
+      {"city":"Mackay",         "state":"QLD","price":5.03,"cafes":1229},
+      {"city":"Rockhampton",    "state":"QLD","price":5.03,"cafes":1229},
+      {"city":"Noosa",          "state":"QLD","price":5.03,"cafes":1229},
+      {"city":"Perth",          "state":"WA", "price":5.05,"cafes":574},
+      {"city":"Bunbury",        "state":"WA", "price":5.05,"cafes":574},
+      {"city":"Margaret River", "state":"WA", "price":5.05,"cafes":574},
+      {"city":"Adelaide",       "state":"SA", "price":5.13,"cafes":343},
+      {"city":"Barossa Valley", "state":"SA", "price":5.13,"cafes":343},
+      {"city":"Victor Harbor",  "state":"SA", "price":5.13,"cafes":343},
+      {"city":"Hobart",         "state":"TAS","price":5.13,"cafes":168},
+      {"city":"Launceston",     "state":"TAS","price":5.13,"cafes":168},
+      {"city":"Devonport",      "state":"TAS","price":5.13,"cafes":168},
+      {"city":"Darwin",         "state":"NT", "price":5.35,"cafes":51},
+      {"city":"Alice Springs",  "state":"NT", "price":5.35,"cafes":51}
+    ]
+  },
+  "layer": [
+    {
+      "transform": [{ "filter": "datum.city === 'Sydney'" }],
+      "mark": { "type": "rule", "color": "#8B4513", "strokeDash": [5, 4], "strokeWidth": 1.3, "opacity": 0.65, "yOffset": -95 },
+      "encoding": {
+        "y": { "field": "price", "type": "quantitative", "scale": { "domain": [4.75, 5.50] } }
+      }
+    },
+    {
+      "transform": [{ "filter": "datum.city === 'Sydney'" }],
+      "mark": { "type": "text", "align": "left", "dx": 185, "dy": 4, "fontSize": 9, "fontStyle": "italic", "color": "#8B4513", "yOffset": -95 },
+      "encoding": {
+        "y": { "field": "price", "type": "quantitative", "scale": { "domain": [4.75, 5.50] } },
+        "text": { "value": "Natl avg $4.99" }
+      }
+    },
+    {
+      "transform": [
+        { "window": [{ "op": "row_number", "as": "rn" }], "groupby": ["state", "price"] },
+        { "calculate": "(datum.rn % 2 === 0 ? 1 : -1) * ceil(datum.rn / 2) * 4", "as": "jitter" }
+      ],
+      "mark": { "type": "point", "filled": true, "size": 100, "opacity": 0.82 },
+      "encoding": {
+        "y": {
+          "field": "price", "type": "quantitative",
+          "scale": { "domain": [4.75, 5.50] },
+          "axis": {
+            "title": "Average Flat White Price (AUD)",
+            "titleColor": "#7B5E3A", "format": "$,.2f",
+            "labelColor": "#7B5E3A", "tickColor": "#C4A882", "domainColor": "#C4A882",
+            "grid": true, "gridColor": "#E8D5C0", "gridDash": [2, 3]
+          }
+        },
+        "xOffset": { "field": "jitter", "type": "quantitative" },
+        "x": {
+          "field": "state", "type": "ordinal",
+          "sort": ["NSW","VIC","ACT","QLD","WA","SA","TAS","NT"],
+          "axis": {
+            "title": null, "labelFontSize": 12, "labelFontWeight": "bold",
+            "labelColor": "#3B1F0A", "ticks": false, "domain": false
+          }
+        },
+        "color": {
+          "field": "state", "type": "nominal",
+          "scale": {
+            "domain": ["NSW","VIC","ACT","QLD","WA","SA","TAS","NT"],
+            "range":  ["#2980b9","#f1c40f","#8e44ad","#27ae60","#e67e22","#c0392b","#16a085","#d35400"]
+          },
+          "legend": {
+            "title": "State", "orient": "bottom", "direction": "horizontal",
+            "columns": 8, "labelColor": "#3B1F0A", "titleColor": "#3B1F0A",
+            "symbolSize": 80, "offset": 8, "labelFontSize": 10
+          }
+        },
+        "tooltip": [
+          { "field": "city",  "title": "City" },
+          { "field": "state", "title": "State" },
+          { "field": "price", "title": "Avg Price", "format": "$,.2f" },
+          { "field": "cafes", "title": "Cafés",     "format": "," }
+        ]
+      }
+    },
+    {
+      "transform": [
+        { "filter": "indexof(['Sydney','Melbourne','Darwin','Adelaide','Canberra','Perth','Brisbane','Hobart'], datum.city) >= 0" }
+      ],
+      "mark": {
+        "type": "text",
+        "dy": -12,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "fontWeight": "bold",
+        "color": "#3B1F0A",
+        "align": "center",
+        "baseline": "bottom"
+      },
+      "encoding": {
+        "y": { "field": "price", "type": "quantitative", "scale": { "domain": [4.75, 5.50] } },
+        "x": { "field": "state", "type": "ordinal", "sort": ["NSW","VIC","ACT","QLD","WA","SA","TAS","NT"] },
+        "text": { "field": "city" }
+      }
+    },
+    {
+      "transform": [{ "filter": "datum.city === 'Darwin'" }],
+      "mark": { "type": "text", "align": "left", "dx": 11, "dy": -10, "fontSize": 9.5, "fontWeight": "bold", "color": "#d35400" },
+      "encoding": {
+        "y": { "field": "price", "type": "quantitative", "scale": { "domain": [4.75, 5.50] } },
+        "x": { "field": "state", "type": "ordinal", "sort": ["NSW","VIC","ACT","QLD","WA","SA","TAS","NT"] },
+        "text": { "value": "Priciest — $0.45 above Sydney" }
+      }
+    },
+    {
+      "transform": [{ "filter": "datum.city === 'Sydney'" }],
+      "mark": { "type": "text", "align": "left", "dx": 11, "dy": 10, "fontSize": 9.5, "fontWeight": "bold", "color": "#2980b9" },
+      "encoding": {
+        "y": { "field": "price", "type": "quantitative", "scale": { "domain": [4.75, 5.50] } },
+        "x": { "field": "state", "type": "ordinal", "sort": ["NSW","VIC","ACT","QLD","WA","SA","TAS","NT"] },
+        "text": { "value": "Cheapest at $4.90" }
+      }
+    }
+  ]
+}

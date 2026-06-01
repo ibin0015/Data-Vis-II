@@ -1,0 +1,38 @@
+city,state,avg_price_aud,cafes_priced
+Sydney,NSW,4.90,1642
+Newcastle,NSW,4.90,1642
+Central Coast,NSW,4.90,1642
+Wollongong,NSW,4.90,1642
+Coffs Harbour,NSW,4.90,1642
+Port Macquarie,NSW,4.90,1642
+Wagga Wagga,NSW,4.90,1642
+Tamworth,NSW,4.90,1642
+Albury,NSW,4.90,1642
+Byron Bay,NSW,4.90,1642
+Melbourne,VIC,5.00,1157
+Geelong,VIC,5.00,1157
+Ballarat,VIC,5.00,1157
+Bendigo,VIC,5.00,1157
+Shepparton,VIC,5.00,1157
+Mildura,VIC,5.00,1157
+Canberra,ACT,5.02,163
+Brisbane,QLD,5.03,1229
+Gold Coast,QLD,5.03,1229
+Sunshine Coast,QLD,5.03,1229
+Townsville,QLD,5.03,1229
+Cairns,QLD,5.03,1229
+Toowoomba,QLD,5.03,1229
+Mackay,QLD,5.03,1229
+Rockhampton,QLD,5.03,1229
+Noosa,QLD,5.03,1229
+Perth,WA,5.05,574
+Bunbury,WA,5.05,574
+Margaret River,WA,5.05,574
+Adelaide,SA,5.13,343
+Barossa Valley,SA,5.13,343
+Victor Harbor,SA,5.13,343
+Hobart,TAS,5.13,168
+Launceston,TAS,5.13,168
+Devonport,TAS,5.13,168
+Darwin,NT,5.35,51
+Alice Springs,NT,5.35,51

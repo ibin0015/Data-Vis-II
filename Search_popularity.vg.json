@@ -1,0 +1,868 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Google Trends: 'Coffee' vs 'Cafe' in Australia (2004\u20132028)",
+    "fontSize": 16,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#888",
+    "anchor": "start",
+    "offset": 12
+  },
+  "width": 900,
+  "height": 420,
+  "config": {
+    "background": "white",
+    "view": {
+      "stroke": "transparent"
+    },
+    "axis": {
+      "grid": true,
+      "gridColor": "#efefef",
+      "gridOpacity": 0.8
+    }
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "Data/time_series_AU_20040101-1100_20260531-2036.csv"
+      },
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.2,
+        "color": "#6F4E37"
+      },
+      "encoding": {
+        "x": {
+          "field": "Time",
+          "type": "temporal",
+          "title": null,
+          "axis": {
+            "format": "%Y",
+            "tickCount": "year",
+            "labelAngle": -45,
+            "labelFontSize": 11
+          }
+        },
+        "y": {
+          "field": "coffee",
+          "type": "quantitative",
+          "title": "Search Interest (0\u2013100)",
+          "scale": {
+            "domain": [
+              0,
+              120
+            ]
+          },
+          "axis": {
+            "labelFontSize": 11
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Time",
+            "type": "temporal",
+            "title": "Date",
+            "format": "%b %Y"
+          },
+          {
+            "field": "coffee",
+            "type": "quantitative",
+            "title": "Coffee"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "Data/time_series_AU_20040101-1100_20260531-2036.csv"
+      },
+      "mark": {
+        "type": "line",
+        "strokeWidth": 1.5,
+        "color": "#6F4E37",
+        "opacity": 0.35
+      },
+      "encoding": {
+        "x": {
+          "field": "Time",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "cafe",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "Time",
+            "type": "temporal",
+            "title": "Date",
+            "format": "%b %Y"
+          },
+          {
+            "field": "cafe",
+            "type": "quantitative",
+            "title": "Cafe"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "date": "2026-05-01",
+            "value": 88.0
+          },
+          {
+            "date": "2026-06-01",
+            "value": 88.3
+          },
+          {
+            "date": "2026-07-01",
+            "value": 88.7
+          },
+          {
+            "date": "2026-08-01",
+            "value": 89.0
+          },
+          {
+            "date": "2026-09-01",
+            "value": 89.4
+          },
+          {
+            "date": "2026-10-01",
+            "value": 89.8
+          },
+          {
+            "date": "2026-11-01",
+            "value": 90.1
+          },
+          {
+            "date": "2026-12-01",
+            "value": 90.5
+          },
+          {
+            "date": "2027-01-01",
+            "value": 90.8
+          },
+          {
+            "date": "2027-02-01",
+            "value": 91.2
+          },
+          {
+            "date": "2027-03-01",
+            "value": 91.5
+          },
+          {
+            "date": "2027-04-01",
+            "value": 91.8
+          },
+          {
+            "date": "2027-05-01",
+            "value": 92.2
+          },
+          {
+            "date": "2027-06-01",
+            "value": 92.5
+          },
+          {
+            "date": "2027-07-01",
+            "value": 92.9
+          },
+          {
+            "date": "2027-08-01",
+            "value": 93.2
+          },
+          {
+            "date": "2027-09-01",
+            "value": 93.6
+          },
+          {
+            "date": "2027-10-01",
+            "value": 94.0
+          },
+          {
+            "date": "2027-11-01",
+            "value": 94.3
+          },
+          {
+            "date": "2027-12-01",
+            "value": 94.7
+          },
+          {
+            "date": "2028-01-01",
+            "value": 95.0
+          },
+          {
+            "date": "2028-02-01",
+            "value": 95.3
+          },
+          {
+            "date": "2028-03-01",
+            "value": 95.7
+          },
+          {
+            "date": "2028-04-01",
+            "value": 96.0
+          },
+          {
+            "date": "2028-05-01",
+            "value": 96.4
+          }
+        ]
+      },
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.2,
+        "strokeDash": [
+          6,
+          5
+        ],
+        "color": "#6F4E37"
+      },
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "value",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "date": "2026-05-01",
+            "value": 88.0
+          },
+          {
+            "date": "2026-06-01",
+            "value": 88.3
+          },
+          {
+            "date": "2026-07-01",
+            "value": 88.7
+          },
+          {
+            "date": "2026-08-01",
+            "value": 89.0
+          },
+          {
+            "date": "2026-09-01",
+            "value": 89.4
+          },
+          {
+            "date": "2026-10-01",
+            "value": 89.8
+          },
+          {
+            "date": "2026-11-01",
+            "value": 90.1
+          },
+          {
+            "date": "2026-12-01",
+            "value": 90.5
+          },
+          {
+            "date": "2027-01-01",
+            "value": 90.8
+          },
+          {
+            "date": "2027-02-01",
+            "value": 91.2
+          },
+          {
+            "date": "2027-03-01",
+            "value": 91.5
+          },
+          {
+            "date": "2027-04-01",
+            "value": 91.8
+          },
+          {
+            "date": "2027-05-01",
+            "value": 92.2
+          },
+          {
+            "date": "2027-06-01",
+            "value": 92.5
+          },
+          {
+            "date": "2027-07-01",
+            "value": 92.9
+          },
+          {
+            "date": "2027-08-01",
+            "value": 93.2
+          },
+          {
+            "date": "2027-09-01",
+            "value": 93.6
+          },
+          {
+            "date": "2027-10-01",
+            "value": 94.0
+          },
+          {
+            "date": "2027-11-01",
+            "value": 94.3
+          },
+          {
+            "date": "2027-12-01",
+            "value": 94.7
+          },
+          {
+            "date": "2028-01-01",
+            "value": 95.0
+          },
+          {
+            "date": "2028-02-01",
+            "value": 95.3
+          },
+          {
+            "date": "2028-03-01",
+            "value": 95.7
+          },
+          {
+            "date": "2028-04-01",
+            "value": 96.0
+          },
+          {
+            "date": "2028-05-01",
+            "value": 96.4
+          }
+        ]
+      },
+      "mark": {
+        "type": "line",
+        "strokeWidth": 1.5,
+        "strokeDash": [
+          6,
+          5
+        ],
+        "color": "#6F4E37",
+        "opacity": 0.35
+      },
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "value",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": "2009-01-01",
+            "y": 28,
+            "label": "coffee"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dx": 0,
+        "dy": 0,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#6F4E37"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": "2009-01-01",
+            "y": 47,
+            "label": "cafe"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dx": 0,
+        "dy": 0,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#6F4E37"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": "2020-04-01",
+            "y": 36
+          }
+        ]
+      },
+      "mark": {
+        "type": "point",
+        "shape": "circle",
+        "size": 55,
+        "color": "#6F4E37",
+        "filled": true,
+        "opacity": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lx": "2020-04-01",
+            "ly": 36
+          },
+          {
+            "lx": "2019-07-01",
+            "ly": 14
+          }
+        ]
+      },
+      "mark": {
+        "type": "line",
+        "strokeDash": [
+          4,
+          4
+        ],
+        "strokeWidth": 1.2,
+        "color": "#888",
+        "opacity": 0.7
+      },
+      "encoding": {
+        "x": {
+          "field": "lx",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "ly",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": "2019-07-01",
+            "y": 14,
+            "label": "COVID lockdowns:"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 4,
+        "dy": -13,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#555"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": "2019-07-01",
+            "y": 14,
+            "label": "Cafe searches collapse (Apr 2020, 36)"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 4,
+        "dy": 0,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#555"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": "2021-04-01",
+            "y": 100
+          }
+        ]
+      },
+      "mark": {
+        "type": "point",
+        "shape": "circle",
+        "size": 55,
+        "color": "#6F4E37",
+        "filled": true,
+        "opacity": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lx": "2021-04-01",
+            "ly": 100
+          },
+          {
+            "lx": "2022-06-01",
+            "ly": 113
+          }
+        ]
+      },
+      "mark": {
+        "type": "line",
+        "strokeDash": [
+          4,
+          4
+        ],
+        "strokeWidth": 1.2,
+        "color": "#888",
+        "opacity": 0.7
+      },
+      "encoding": {
+        "x": {
+          "field": "lx",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "ly",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": "2022-06-01",
+            "y": 113,
+            "label": "Cafe peak: 100"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 4,
+        "dy": -13,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#555"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": "2022-06-01",
+            "y": 113,
+            "label": "Post-lockdown rebound (Apr 2021)"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 4,
+        "dy": 0,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#555"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": "2025-12-01",
+            "y": 91
+          }
+        ]
+      },
+      "mark": {
+        "type": "point",
+        "shape": "circle",
+        "size": 55,
+        "color": "#6F4E37",
+        "filled": true,
+        "opacity": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lx": "2025-12-01",
+            "ly": 91
+          },
+          {
+            "lx": "2024-04-01",
+            "ly": 99
+          }
+        ]
+      },
+      "mark": {
+        "type": "line",
+        "strokeDash": [
+          4,
+          4
+        ],
+        "strokeWidth": 1.2,
+        "color": "#888",
+        "opacity": 0.7
+      },
+      "encoding": {
+        "x": {
+          "field": "lx",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "ly",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": "2024-04-01",
+            "y": 99,
+            "label": "Coffee peak: 91"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 4,
+        "dy": -13,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#555"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": "2024-04-01",
+            "y": 99,
+            "label": "(Dec 2025)"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 4,
+        "dy": 0,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#555"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": "2026-05-01"
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "strokeDash": [
+          4,
+          4
+        ],
+        "color": "#bbb",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "temporal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": "2026-06-01",
+            "y": 117,
+            "label": "\u25b6 Forecast"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 2,
+        "dy": 0,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#aaa"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ]
+}

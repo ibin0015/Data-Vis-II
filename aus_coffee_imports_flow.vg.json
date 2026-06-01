@@ -1,0 +1,2142 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Australia: Green Coffee Bean Imports by Country (2023)",
+    "subtitle": "Coffee, not roasted or decaffeinated (HS 090111) \u00b7 Line width proportional to trade value \u00b7 Click a country to highlight its flow \u00b7 Source: WITS 2023",
+    "fontSize": 16,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#888",
+    "anchor": "start",
+    "offset": 12,
+    "color": "#3b2212"
+  },
+  "width": 900,
+  "height": 500,
+  "config": {
+    "background": "#f9f4ef",
+    "view": {
+      "stroke": "transparent"
+    }
+  },
+  "projection": {
+    "type": "equalEarth"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "js/ne_110m_admin_0_countries.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_110m_admin_0_countries"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e8ddd4",
+        "stroke": "#c9b89e",
+        "strokeWidth": 0.4
+      }
+    },
+    {
+      "data": {
+        "url": "js/ne_110m_admin_0_countries.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_110m_admin_0_countries"
+        }
+      },
+      "transform": [
+        {
+          "calculate": "datum.properties.NAME == 'United States of America' ? 'United States of America' : datum.properties.NAME == 'Timor-Leste' ? 'Timor-Leste' : datum.properties.NAME == 'Laos' ? 'Laos' : datum.properties.NAME == 'Ethiopia' ? 'Ethiopia' : datum.properties.NAME",
+          "as": "topo_name"
+        },
+        {
+          "lookup": "topo_name",
+          "from": {
+            "data": {
+              "values": [
+                {
+                  "topo_name": "Brazil",
+                  "value_usd_k": 112085.1,
+                  "qty_tonnes": 25092.5
+                },
+                {
+                  "topo_name": "Colombia",
+                  "value_usd_k": 63675.1,
+                  "qty_tonnes": 10989.6
+                },
+                {
+                  "topo_name": "Honduras",
+                  "value_usd_k": 38886.6,
+                  "qty_tonnes": 7684.4
+                },
+                {
+                  "topo_name": "Papua New Guinea",
+                  "value_usd_k": 35247.0,
+                  "qty_tonnes": 7957.6
+                },
+                {
+                  "topo_name": "Vietnam",
+                  "value_usd_k": 32196.8,
+                  "qty_tonnes": 12459.7
+                },
+                {
+                  "topo_name": "Ethiopia",
+                  "value_usd_k": 29361.3,
+                  "qty_tonnes": 5496.1
+                },
+                {
+                  "topo_name": "India",
+                  "value_usd_k": 19415.7,
+                  "qty_tonnes": 5402.9
+                },
+                {
+                  "topo_name": "Nicaragua",
+                  "value_usd_k": 14133.2,
+                  "qty_tonnes": 2624.6
+                },
+                {
+                  "topo_name": "Peru",
+                  "value_usd_k": 13476.8,
+                  "qty_tonnes": 2394.1
+                },
+                {
+                  "topo_name": "Guatemala",
+                  "value_usd_k": 13245.7,
+                  "qty_tonnes": 2164.5
+                },
+                {
+                  "topo_name": "Kenya",
+                  "value_usd_k": 12135.4,
+                  "qty_tonnes": 1879.2
+                },
+                {
+                  "topo_name": "Indonesia",
+                  "value_usd_k": 8617.6,
+                  "qty_tonnes": 1632.0
+                },
+                {
+                  "topo_name": "El Salvador",
+                  "value_usd_k": 6475.0,
+                  "qty_tonnes": 1050.0
+                },
+                {
+                  "topo_name": "Costa Rica",
+                  "value_usd_k": 6411.0,
+                  "qty_tonnes": 1025.9
+                },
+                {
+                  "topo_name": "Germany",
+                  "value_usd_k": 5864.9,
+                  "qty_tonnes": 1467.0
+                },
+                {
+                  "topo_name": "Mexico",
+                  "value_usd_k": 5759.1,
+                  "qty_tonnes": 1017.5
+                },
+                {
+                  "topo_name": "Tanzania",
+                  "value_usd_k": 4638.1,
+                  "qty_tonnes": 928.5
+                },
+                {
+                  "topo_name": "Uganda",
+                  "value_usd_k": 3451.8,
+                  "qty_tonnes": 818.7
+                },
+                {
+                  "topo_name": "Belgium",
+                  "value_usd_k": 1397.3,
+                  "qty_tonnes": 347.7
+                },
+                {
+                  "topo_name": "Switzerland",
+                  "value_usd_k": 1343.0,
+                  "qty_tonnes": 382.6
+                },
+                {
+                  "topo_name": "Timor-Leste",
+                  "value_usd_k": 1319.8,
+                  "qty_tonnes": 232.6
+                },
+                {
+                  "topo_name": "China",
+                  "value_usd_k": 1313.2,
+                  "qty_tonnes": 282.9
+                },
+                {
+                  "topo_name": "Rwanda",
+                  "value_usd_k": 1305.8,
+                  "qty_tonnes": 167.5
+                },
+                {
+                  "topo_name": "Panama",
+                  "value_usd_k": 1267.4,
+                  "qty_tonnes": 208.7
+                },
+                {
+                  "topo_name": "Djibouti",
+                  "value_usd_k": 807.9,
+                  "qty_tonnes": 138.9
+                },
+                {
+                  "topo_name": "Denmark",
+                  "value_usd_k": 802.7,
+                  "qty_tonnes": 96.0
+                },
+                {
+                  "topo_name": "Singapore",
+                  "value_usd_k": 752.9,
+                  "qty_tonnes": 155.3
+                },
+                {
+                  "topo_name": "Burundi",
+                  "value_usd_k": 726.9,
+                  "qty_tonnes": 103.6
+                },
+                {
+                  "topo_name": "Western Sahara",
+                  "value_usd_k": 422.2,
+                  "qty_tonnes": 96.0
+                },
+                {
+                  "topo_name": "Ecuador",
+                  "value_usd_k": 371.0,
+                  "qty_tonnes": 23.7
+                },
+                {
+                  "topo_name": "Chile",
+                  "value_usd_k": 303.2,
+                  "qty_tonnes": 38.5
+                },
+                {
+                  "topo_name": "Canada",
+                  "value_usd_k": 293.6,
+                  "qty_tonnes": 63.6
+                },
+                {
+                  "topo_name": "Bolivia",
+                  "value_usd_k": 280.4,
+                  "qty_tonnes": 21.2
+                },
+                {
+                  "topo_name": "United Kingdom",
+                  "value_usd_k": 226.1,
+                  "qty_tonnes": 38.5
+                },
+                {
+                  "topo_name": "United States of America",
+                  "value_usd_k": 173.4,
+                  "qty_tonnes": 28.8
+                },
+                {
+                  "topo_name": "Zambia",
+                  "value_usd_k": 132.7,
+                  "qty_tonnes": 19.2
+                },
+                {
+                  "topo_name": "New Zealand",
+                  "value_usd_k": 125.8,
+                  "qty_tonnes": 16.4
+                },
+                {
+                  "topo_name": "Netherlands",
+                  "value_usd_k": 114.1,
+                  "qty_tonnes": 19.2
+                },
+                {
+                  "topo_name": "Myanmar",
+                  "value_usd_k": 104.7,
+                  "qty_tonnes": 11.2
+                },
+                {
+                  "topo_name": "Malaysia",
+                  "value_usd_k": 95.4,
+                  "qty_tonnes": 19.7
+                },
+                {
+                  "topo_name": "Hungary",
+                  "value_usd_k": 84.7,
+                  "qty_tonnes": 20.7
+                },
+                {
+                  "topo_name": "Jamaica",
+                  "value_usd_k": 75.3,
+                  "qty_tonnes": 1.2
+                },
+                {
+                  "topo_name": "Yemen",
+                  "value_usd_k": 65.6,
+                  "qty_tonnes": 3.5
+                },
+                {
+                  "topo_name": "Thailand",
+                  "value_usd_k": 52.8,
+                  "qty_tonnes": 4.7
+                },
+                {
+                  "topo_name": "Italy",
+                  "value_usd_k": 48.5,
+                  "qty_tonnes": 10.0
+                },
+                {
+                  "topo_name": "Laos",
+                  "value_usd_k": 33.3,
+                  "qty_tonnes": 9.0
+                },
+                {
+                  "topo_name": "Nepal",
+                  "value_usd_k": 27.9,
+                  "qty_tonnes": 1.9
+                },
+                {
+                  "topo_name": "Philippines",
+                  "value_usd_k": 7.1,
+                  "qty_tonnes": 0.4
+                },
+                {
+                  "topo_name": "France",
+                  "value_usd_k": 1.4,
+                  "qty_tonnes": 0.0
+                }
+              ]
+            },
+            "key": "topo_name",
+            "fields": [
+              "value_usd_k",
+              "qty_tonnes"
+            ]
+          }
+        },
+        {
+          "filter": "datum.value_usd_k > 0"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#c9b89e",
+        "strokeWidth": 0.5
+      },
+      "encoding": {
+        "color": {
+          "field": "value_usd_k",
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain": [
+              1000,
+              10000,
+              40000,
+              100000
+            ],
+            "range": [
+              "#f7dcb4",
+              "#e8a96b",
+              "#c8693a",
+              "#9e3b10",
+              "#6b1a00"
+            ]
+          },
+          "legend": {
+            "title": "Import Value (USD '000)",
+            "orient": "bottom-left",
+            "labelColor": "#555",
+            "titleColor": "#444",
+            "titleFontSize": 10,
+            "labelFontSize": 9
+          }
+        },
+        "tooltip": [
+          {
+            "field": "topo_name",
+            "title": "Country"
+          },
+          {
+            "field": "value_usd_k",
+            "title": "Value (USD '000)",
+            "format": ",.0f"
+          },
+          {
+            "field": "qty_tonnes",
+            "title": "Quantity (tonnes)",
+            "format": ",.1f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "js/ne_110m_admin_0_countries.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_110m_admin_0_countries"
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.properties.NAME == 'Australia'"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "fill": "#6F4E37",
+        "stroke": "#c9b89e",
+        "strokeWidth": 0.8,
+        "fillOpacity": 0.9
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "origin": "Brazil",
+            "origin_lon": -51.9,
+            "origin_lat": -14.2,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 112085.1,
+            "qty_tonnes": 25092.5
+          },
+          {
+            "origin": "Colombia",
+            "origin_lon": -74.3,
+            "origin_lat": 4.6,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 63675.1,
+            "qty_tonnes": 10989.6
+          },
+          {
+            "origin": "Papua New Guinea",
+            "origin_lon": 143.9,
+            "origin_lat": -6.3,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 35247.0,
+            "qty_tonnes": 7957.6
+          },
+          {
+            "origin": "Vietnam",
+            "origin_lon": 108.0,
+            "origin_lat": 16.5,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 32196.8,
+            "qty_tonnes": 12459.7
+          },
+          {
+            "origin": "Ethiopia",
+            "origin_lon": 40.5,
+            "origin_lat": 9.1,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 29361.3,
+            "qty_tonnes": 5496.1
+          },
+          {
+            "origin": "India",
+            "origin_lon": 78.9,
+            "origin_lat": 20.6,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 19415.7,
+            "qty_tonnes": 5402.9
+          },
+          {
+            "origin": "Nicaragua",
+            "origin_lon": -85.2,
+            "origin_lat": 12.9,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 14133.2,
+            "qty_tonnes": 2624.6
+          },
+          {
+            "origin": "Peru",
+            "origin_lon": -75.0,
+            "origin_lat": -10.0,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 13476.8,
+            "qty_tonnes": 2394.1
+          },
+          {
+            "origin": "Guatemala",
+            "origin_lon": -90.2,
+            "origin_lat": 15.8,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 13245.7,
+            "qty_tonnes": 2164.5
+          },
+          {
+            "origin": "Kenya",
+            "origin_lon": 37.9,
+            "origin_lat": 0.0,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 12135.4,
+            "qty_tonnes": 1879.2
+          },
+          {
+            "origin": "Indonesia",
+            "origin_lon": 113.9,
+            "origin_lat": -0.8,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 8617.6,
+            "qty_tonnes": 1632.0
+          },
+          {
+            "origin": "El Salvador",
+            "origin_lon": -88.9,
+            "origin_lat": 13.8,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 6475.0,
+            "qty_tonnes": 1050.0
+          },
+          {
+            "origin": "Costa Rica",
+            "origin_lon": -84.0,
+            "origin_lat": 9.7,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 6411.0,
+            "qty_tonnes": 1025.9
+          },
+          {
+            "origin": "Germany",
+            "origin_lon": 10.5,
+            "origin_lat": 51.2,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 5864.9,
+            "qty_tonnes": 1467.0
+          },
+          {
+            "origin": "Mexico",
+            "origin_lon": -99.1,
+            "origin_lat": 23.6,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 5759.1,
+            "qty_tonnes": 1017.5
+          },
+          {
+            "origin": "Tanzania",
+            "origin_lon": 34.9,
+            "origin_lat": -6.4,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 4638.1,
+            "qty_tonnes": 928.5
+          },
+          {
+            "origin": "Uganda",
+            "origin_lon": 32.3,
+            "origin_lat": 1.4,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 3451.8,
+            "qty_tonnes": 818.7
+          },
+          {
+            "origin": "Belgium",
+            "origin_lon": 4.5,
+            "origin_lat": 50.5,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 1397.3,
+            "qty_tonnes": 347.7
+          },
+          {
+            "origin": "Switzerland",
+            "origin_lon": 8.2,
+            "origin_lat": 46.8,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 1343.0,
+            "qty_tonnes": 382.6
+          },
+          {
+            "origin": "East Timor",
+            "origin_lon": 125.7,
+            "origin_lat": -8.9,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 1319.8,
+            "qty_tonnes": 232.6
+          },
+          {
+            "origin": "China",
+            "origin_lon": 104.2,
+            "origin_lat": 35.9,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 1313.2,
+            "qty_tonnes": 282.9
+          },
+          {
+            "origin": "Rwanda",
+            "origin_lon": 29.9,
+            "origin_lat": -1.9,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 1305.8,
+            "qty_tonnes": 167.5
+          },
+          {
+            "origin": "Panama",
+            "origin_lon": -80.8,
+            "origin_lat": 8.5,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 1267.4,
+            "qty_tonnes": 208.7
+          },
+          {
+            "origin": "Djibouti",
+            "origin_lon": 42.6,
+            "origin_lat": 11.8,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 807.9,
+            "qty_tonnes": 138.9
+          },
+          {
+            "origin": "Denmark",
+            "origin_lon": 10.0,
+            "origin_lat": 56.3,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 802.7,
+            "qty_tonnes": 96.0
+          },
+          {
+            "origin": "Singapore",
+            "origin_lon": 103.8,
+            "origin_lat": 1.4,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 752.9,
+            "qty_tonnes": 155.3
+          },
+          {
+            "origin": "Burundi",
+            "origin_lon": 29.9,
+            "origin_lat": -3.4,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 726.9,
+            "qty_tonnes": 103.6
+          },
+          {
+            "origin": "Ecuador",
+            "origin_lon": -78.2,
+            "origin_lat": -1.8,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 371.0,
+            "qty_tonnes": 23.7
+          },
+          {
+            "origin": "Chile",
+            "origin_lon": -71.5,
+            "origin_lat": -35.7,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 303.2,
+            "qty_tonnes": 38.5
+          },
+          {
+            "origin": "Canada",
+            "origin_lon": -96.8,
+            "origin_lat": 56.1,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 293.6,
+            "qty_tonnes": 63.6
+          },
+          {
+            "origin": "Bolivia",
+            "origin_lon": -64.7,
+            "origin_lat": -16.3,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 280.4,
+            "qty_tonnes": 21.2
+          },
+          {
+            "origin": "United Kingdom",
+            "origin_lon": -3.4,
+            "origin_lat": 55.4,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 226.1,
+            "qty_tonnes": 38.5
+          },
+          {
+            "origin": "United States",
+            "origin_lon": -98.6,
+            "origin_lat": 39.5,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 173.4,
+            "qty_tonnes": 28.8
+          },
+          {
+            "origin": "Zambia",
+            "origin_lon": 27.8,
+            "origin_lat": -13.1,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 132.7,
+            "qty_tonnes": 19.2
+          },
+          {
+            "origin": "New Zealand",
+            "origin_lon": 172.6,
+            "origin_lat": -40.9,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 125.8,
+            "qty_tonnes": 16.4
+          },
+          {
+            "origin": "Netherlands",
+            "origin_lon": 5.3,
+            "origin_lat": 52.1,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 114.1,
+            "qty_tonnes": 19.2
+          },
+          {
+            "origin": "Myanmar",
+            "origin_lon": 96.7,
+            "origin_lat": 19.2,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 104.7,
+            "qty_tonnes": 11.2
+          },
+          {
+            "origin": "Malaysia",
+            "origin_lon": 109.7,
+            "origin_lat": 4.2,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 95.4,
+            "qty_tonnes": 19.7
+          },
+          {
+            "origin": "Yemen",
+            "origin_lon": 47.6,
+            "origin_lat": 15.6,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 65.6,
+            "qty_tonnes": 3.5
+          },
+          {
+            "origin": "Thailand",
+            "origin_lon": 100.9,
+            "origin_lat": 15.9,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 52.8,
+            "qty_tonnes": 4.7
+          },
+          {
+            "origin": "Italy",
+            "origin_lon": 12.6,
+            "origin_lat": 42.5,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 48.5,
+            "qty_tonnes": 10.0
+          },
+          {
+            "origin": "Lao PDR",
+            "origin_lon": 102.5,
+            "origin_lat": 17.9,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 33.3,
+            "qty_tonnes": 9.0
+          },
+          {
+            "origin": "Nepal",
+            "origin_lon": 84.1,
+            "origin_lat": 28.4,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 27.9,
+            "qty_tonnes": 1.9
+          },
+          {
+            "origin": "Philippines",
+            "origin_lon": 121.8,
+            "origin_lat": 13.0,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 7.1,
+            "qty_tonnes": 0.4
+          },
+          {
+            "origin": "France",
+            "origin_lon": 2.2,
+            "origin_lat": 46.2,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 1.4,
+            "qty_tonnes": 0.0
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "opacity": 0.75
+      },
+      "encoding": {
+        "longitude": {
+          "field": "origin_lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "origin_lat",
+          "type": "quantitative"
+        },
+        "longitude2": {
+          "field": "dest_lon"
+        },
+        "latitude2": {
+          "field": "dest_lat"
+        },
+        "strokeWidth": {
+          "field": "value_usd_k",
+          "type": "quantitative",
+          "scale": {
+            "type": "sqrt",
+            "domain": [
+              1,
+              112085
+            ],
+            "range": [
+              0.4,
+              8
+            ]
+          },
+          "legend": null
+        },
+        "color": {
+          "condition": {
+            "param": "selectedOrigin",
+            "empty": true,
+            "field": "value_usd_k",
+            "type": "quantitative",
+            "scale": {
+              "type": "threshold",
+              "domain": [
+                1000,
+                10000,
+                40000,
+                100000
+              ],
+              "range": [
+                "#f7dcb4",
+                "#e8a96b",
+                "#c8693a",
+                "#9e3b10",
+                "#6b1a00"
+              ]
+            },
+            "legend": null
+          },
+          "value": "#aaa"
+        },
+        "opacity": {
+          "condition": {
+            "param": "selectedOrigin",
+            "empty": true,
+            "value": 0.75
+          },
+          "value": 0.08
+        },
+        "tooltip": [
+          {
+            "field": "origin",
+            "title": "Exporting Country"
+          },
+          {
+            "field": "value_usd_k",
+            "title": "Value (USD '000)",
+            "format": ",.0f"
+          },
+          {
+            "field": "qty_tonnes",
+            "title": "Quantity (tonnes)",
+            "format": ",.1f"
+          }
+        ]
+      },
+      "params": [
+        {
+          "name": "selectedOrigin",
+          "select": {
+            "type": "point",
+            "fields": [
+              "origin"
+            ],
+            "on": "click",
+            "clear": "dblclick"
+          }
+        }
+      ]
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "origin": "Brazil",
+            "origin_lon": -51.9,
+            "origin_lat": -14.2,
+            "value_usd_k": 112085.1,
+            "qty_tonnes": 25092.5,
+            "dx": 0,
+            "dy": -14
+          },
+          {
+            "origin": "Colombia",
+            "origin_lon": -74.3,
+            "origin_lat": 4.6,
+            "value_usd_k": 63675.1,
+            "qty_tonnes": 10989.6,
+            "dx": -32,
+            "dy": 0
+          },
+          {
+            "origin": "Papua New Guinea",
+            "origin_lon": 143.9,
+            "origin_lat": -6.3,
+            "value_usd_k": 35247.0,
+            "qty_tonnes": 7957.6,
+            "dx": 0,
+            "dy": -14
+          },
+          {
+            "origin": "Vietnam",
+            "origin_lon": 108.0,
+            "origin_lat": 16.5,
+            "value_usd_k": 32196.8,
+            "qty_tonnes": 12459.7,
+            "dx": 0,
+            "dy": -14
+          },
+          {
+            "origin": "Ethiopia",
+            "origin_lon": 40.5,
+            "origin_lat": 9.1,
+            "value_usd_k": 29361.3,
+            "qty_tonnes": 5496.1,
+            "dx": 0,
+            "dy": -14
+          },
+          {
+            "origin": "India",
+            "origin_lon": 78.9,
+            "origin_lat": 20.6,
+            "value_usd_k": 19415.7,
+            "qty_tonnes": 5402.9,
+            "dx": -30,
+            "dy": 0
+          },
+          {
+            "origin": "Kenya",
+            "origin_lon": 37.9,
+            "origin_lat": 0.0,
+            "value_usd_k": 12135.4,
+            "qty_tonnes": 1879.2,
+            "dx": -28,
+            "dy": 0
+          },
+          {
+            "origin": "Indonesia",
+            "origin_lon": 113.9,
+            "origin_lat": -0.8,
+            "value_usd_k": 8617.6,
+            "qty_tonnes": 1632.0,
+            "dx": 0,
+            "dy": 14
+          },
+          {
+            "origin": "Germany",
+            "origin_lon": 10.5,
+            "origin_lat": 51.2,
+            "value_usd_k": 5864.9,
+            "qty_tonnes": 1467.0,
+            "dx": 0,
+            "dy": -14
+          },
+          {
+            "origin": "Mexico",
+            "origin_lon": -99.1,
+            "origin_lat": 23.6,
+            "value_usd_k": 5759.1,
+            "qty_tonnes": 1017.5,
+            "dx": 0,
+            "dy": -14
+          },
+          {
+            "origin": "Tanzania",
+            "origin_lon": 34.9,
+            "origin_lat": -6.4,
+            "value_usd_k": 4638.1,
+            "qty_tonnes": 928.5,
+            "dx": 0,
+            "dy": 14
+          },
+          {
+            "origin": "China",
+            "origin_lon": 104.2,
+            "origin_lat": 35.9,
+            "value_usd_k": 1313.2,
+            "qty_tonnes": 282.9,
+            "dx": 0,
+            "dy": -14
+          },
+          {
+            "origin": "Peru",
+            "origin_lon": -75.0,
+            "origin_lat": -10.0,
+            "value_usd_k": 13476.8,
+            "qty_tonnes": 2394.1,
+            "dx": -28,
+            "dy": 0
+          },
+          {
+            "origin": "United States",
+            "origin_lon": -98.6,
+            "origin_lat": 39.5,
+            "value_usd_k": 173.4,
+            "qty_tonnes": 28.8,
+            "dx": -36,
+            "dy": 0
+          },
+          {
+            "origin": "Canada",
+            "origin_lon": -96.8,
+            "origin_lat": 56.1,
+            "value_usd_k": 293.6,
+            "qty_tonnes": 63.6,
+            "dx": 0,
+            "dy": -14
+          },
+          {
+            "origin": "Guatemala",
+            "origin_lon": -90.2,
+            "origin_lat": 15.8,
+            "value_usd_k": 13245.7,
+            "qty_tonnes": 2164.5,
+            "dx": 0,
+            "dy": -14
+          },
+          {
+            "origin": "Nicaragua",
+            "origin_lon": -85.2,
+            "origin_lat": 12.9,
+            "value_usd_k": 14133.2,
+            "qty_tonnes": 2624.6,
+            "dx": 32,
+            "dy": 6
+          },
+          {
+            "origin": "New Zealand",
+            "origin_lon": 172.6,
+            "origin_lat": -40.9,
+            "dx": 0,
+            "dy": -14
+          },
+          {
+            "origin": "Yemen",
+            "origin_lon": 47.6,
+            "origin_lat": 15.6,
+            "dx": 30,
+            "dy": 0
+          },
+          {
+            "origin": "Zambia",
+            "origin_lon": 27.8,
+            "origin_lat": -13.1,
+            "dx": -30,
+            "dy": 0
+          },
+          {
+            "origin": "Philippines",
+            "origin_lon": 121.8,
+            "origin_lat": 13.0,
+            "dx": 0,
+            "dy": -14
+          },
+          {
+            "origin": "Chile",
+            "origin_lon": -71.5,
+            "origin_lat": -35.7,
+            "dx": -30,
+            "dy": 0
+          },
+          {
+            "origin": "Bolivia",
+            "origin_lon": -64.7,
+            "origin_lat": -16.3,
+            "dx": 30,
+            "dy": 0
+          },
+          {
+            "origin": "Italy",
+            "origin_lon": 12.6,
+            "origin_lat": 42.5,
+            "dx": 28,
+            "dy": 0
+          },
+          {
+            "origin": "Nepal",
+            "origin_lon": 84.1,
+            "origin_lat": 28.4,
+            "dx": 30,
+            "dy": 0
+          },
+          {
+            "origin": "Ecuador",
+            "origin_lon": -78.2,
+            "origin_lat": -1.8,
+            "dx": -32,
+            "dy": 0
+          },
+          {
+            "origin": "Myanmar",
+            "origin_lon": 96.7,
+            "origin_lat": 19.2,
+            "dx": -32,
+            "dy": 0
+          },
+          {
+            "origin": "Malaysia",
+            "origin_lon": 109.7,
+            "origin_lat": 4.2,
+            "dx": -32,
+            "dy": 0
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "fontWeight": "bold",
+        "fill": "transparent",
+        "stroke": "#ffffff",
+        "strokeWidth": 4
+      },
+      "encoding": {
+        "longitude": {
+          "field": "origin_lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "origin_lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "origin"
+        },
+        "dx": {
+          "field": "dx",
+          "type": "quantitative"
+        },
+        "dy": {
+          "field": "dy",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "origin": "Brazil",
+            "origin_lon": -51.9,
+            "origin_lat": -14.2,
+            "dx": 0,
+            "dy": -14
+          },
+          {
+            "origin": "Colombia",
+            "origin_lon": -74.3,
+            "origin_lat": 4.6,
+            "dx": -32,
+            "dy": 0
+          },
+          {
+            "origin": "Papua New Guinea",
+            "origin_lon": 143.9,
+            "origin_lat": -6.3,
+            "dx": 0,
+            "dy": -14
+          },
+          {
+            "origin": "Vietnam",
+            "origin_lon": 108.0,
+            "origin_lat": 16.5,
+            "dx": 0,
+            "dy": -14
+          },
+          {
+            "origin": "Ethiopia",
+            "origin_lon": 40.5,
+            "origin_lat": 9.1,
+            "dx": 0,
+            "dy": -14
+          },
+          {
+            "origin": "India",
+            "origin_lon": 78.9,
+            "origin_lat": 20.6,
+            "dx": -30,
+            "dy": 0
+          },
+          {
+            "origin": "Kenya",
+            "origin_lon": 37.9,
+            "origin_lat": 0.0,
+            "dx": -28,
+            "dy": 0
+          },
+          {
+            "origin": "Indonesia",
+            "origin_lon": 113.9,
+            "origin_lat": -0.8,
+            "dx": 0,
+            "dy": 14
+          },
+          {
+            "origin": "Germany",
+            "origin_lon": 10.5,
+            "origin_lat": 51.2,
+            "dx": 0,
+            "dy": -14
+          },
+          {
+            "origin": "Mexico",
+            "origin_lon": -99.1,
+            "origin_lat": 23.6,
+            "dx": 0,
+            "dy": -14
+          },
+          {
+            "origin": "Tanzania",
+            "origin_lon": 34.9,
+            "origin_lat": -6.4,
+            "dx": 0,
+            "dy": 14
+          },
+          {
+            "origin": "China",
+            "origin_lon": 104.2,
+            "origin_lat": 35.9,
+            "dx": 0,
+            "dy": -14
+          },
+          {
+            "origin": "Peru",
+            "origin_lon": -75.0,
+            "origin_lat": -10.0,
+            "dx": -28,
+            "dy": 0
+          },
+          {
+            "origin": "United States",
+            "origin_lon": -98.6,
+            "origin_lat": 39.5,
+            "dx": -36,
+            "dy": 0
+          },
+          {
+            "origin": "Canada",
+            "origin_lon": -96.8,
+            "origin_lat": 56.1,
+            "dx": 0,
+            "dy": -14
+          },
+          {
+            "origin": "Guatemala",
+            "origin_lon": -90.2,
+            "origin_lat": 15.8,
+            "dx": 0,
+            "dy": -14
+          },
+          {
+            "origin": "Nicaragua",
+            "origin_lon": -85.2,
+            "origin_lat": 12.9,
+            "dx": 32,
+            "dy": 6
+          },
+          {
+            "origin": "New Zealand",
+            "origin_lon": 172.6,
+            "origin_lat": -40.9,
+            "dx": 0,
+            "dy": -14
+          },
+          {
+            "origin": "Yemen",
+            "origin_lon": 47.6,
+            "origin_lat": 15.6,
+            "dx": 30,
+            "dy": 0
+          },
+          {
+            "origin": "Zambia",
+            "origin_lon": 27.8,
+            "origin_lat": -13.1,
+            "dx": -30,
+            "dy": 0
+          },
+          {
+            "origin": "Philippines",
+            "origin_lon": 121.8,
+            "origin_lat": 13.0,
+            "dx": 0,
+            "dy": -14
+          },
+          {
+            "origin": "Chile",
+            "origin_lon": -71.5,
+            "origin_lat": -35.7,
+            "dx": -30,
+            "dy": 0
+          },
+          {
+            "origin": "Bolivia",
+            "origin_lon": -64.7,
+            "origin_lat": -16.3,
+            "dx": 30,
+            "dy": 0
+          },
+          {
+            "origin": "Italy",
+            "origin_lon": 12.6,
+            "origin_lat": 42.5,
+            "dx": 28,
+            "dy": 0
+          },
+          {
+            "origin": "Nepal",
+            "origin_lon": 84.1,
+            "origin_lat": 28.4,
+            "dx": 30,
+            "dy": 0
+          },
+          {
+            "origin": "Ecuador",
+            "origin_lon": -78.2,
+            "origin_lat": -1.8,
+            "dx": -32,
+            "dy": 0
+          },
+          {
+            "origin": "Myanmar",
+            "origin_lon": 96.7,
+            "origin_lat": 19.2,
+            "dx": -32,
+            "dy": 0
+          },
+          {
+            "origin": "Malaysia",
+            "origin_lon": 109.7,
+            "origin_lat": 4.2,
+            "dx": -32,
+            "dy": 0
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "fontWeight": "bold",
+        "color": "#6F4E37",
+        "align": "center"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "origin_lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "origin_lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "origin"
+        },
+        "dx": {
+          "field": "dx",
+          "type": "quantitative"
+        },
+        "dy": {
+          "field": "dy",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "description": "Brazil annotation leader line",
+      "data": {
+        "values": [
+          {
+            "lon": -28.0,
+            "lat": -30.0,
+            "lon2": -51.9,
+            "lat2": -14.2
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "strokeDash": [
+          4,
+          3
+        ],
+        "color": "#9e3b10",
+        "strokeWidth": 1.2,
+        "opacity": 0.8
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "longitude2": {
+          "field": "lon2"
+        },
+        "latitude2": {
+          "field": "lat2"
+        }
+      }
+    },
+    {
+      "description": "Brazil title halo",
+      "data": {
+        "values": [
+          {
+            "lon": -28.0,
+            "lat": -30.0,
+            "label": "Brazil \u2014 Top Supplier"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 4,
+        "dy": 0,
+        "fontSize": 10,
+        "fontWeight": "bold",
+        "fill": "transparent",
+        "stroke": "#f9f4ef",
+        "strokeWidth": 5
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "description": "Brazil title text",
+      "data": {
+        "values": [
+          {
+            "lon": -28.0,
+            "lat": -30.0,
+            "label": "Brazil \u2014 Top Supplier"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 4,
+        "dy": 0,
+        "fontSize": 10,
+        "fontWeight": "bold",
+        "color": "#9e3b10"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "description": "Brazil subtitle halo",
+      "data": {
+        "values": [
+          {
+            "lon": -28.0,
+            "lat": -33.5,
+            "sub": "USD 112,085k \u00b7 25,093 t"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 4,
+        "dy": 0,
+        "fontSize": 9,
+        "fill": "transparent",
+        "stroke": "#f9f4ef",
+        "strokeWidth": 4
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "sub"
+        }
+      }
+    },
+    {
+      "description": "Brazil subtitle text",
+      "data": {
+        "values": [
+          {
+            "lon": -28.0,
+            "lat": -33.5,
+            "sub": "USD 112,085k \u00b7 25,093 t"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 4,
+        "dy": 0,
+        "fontSize": 9,
+        "color": "#6b4226"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "sub"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 133.8,
+            "lat": -25.0,
+            "label": "Australia"
+          }
+        ]
+      },
+      "mark": {
+        "type": "circle",
+        "color": "#3b1800",
+        "stroke": "#fff",
+        "strokeWidth": 1.5,
+        "size": 120
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 133.8,
+            "lat": -25.0,
+            "label": "Australia"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "dy": 18,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "fill": "transparent",
+        "stroke": "#ffffff",
+        "strokeWidth": 4
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 133.8,
+            "lat": -25.0,
+            "label": "Australia"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "dy": 18,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "color": "#3b1800"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 155,
+            "lat": -52,
+            "note": "Click a flow line to highlight \u00b7 Double-click to reset"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 9,
+        "fontStyle": "italic",
+        "color": "#aaa",
+        "align": "right"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "note"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "origin": "Brazil",
+            "origin_lon": -51.9,
+            "origin_lat": -14.2,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 112085.1,
+            "qty_tonnes": 25092.5
+          },
+          {
+            "origin": "Colombia",
+            "origin_lon": -74.3,
+            "origin_lat": 4.6,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 63675.1,
+            "qty_tonnes": 10989.6
+          },
+          {
+            "origin": "Papua New Guinea",
+            "origin_lon": 143.9,
+            "origin_lat": -6.3,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 35247.0,
+            "qty_tonnes": 7957.6
+          },
+          {
+            "origin": "Vietnam",
+            "origin_lon": 108.0,
+            "origin_lat": 16.5,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 32196.8,
+            "qty_tonnes": 12459.7
+          },
+          {
+            "origin": "Ethiopia",
+            "origin_lon": 40.5,
+            "origin_lat": 9.1,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 29361.3,
+            "qty_tonnes": 5496.1
+          },
+          {
+            "origin": "India",
+            "origin_lon": 78.9,
+            "origin_lat": 20.6,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 19415.7,
+            "qty_tonnes": 5402.9
+          },
+          {
+            "origin": "Nicaragua",
+            "origin_lon": -85.2,
+            "origin_lat": 12.9,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 14133.2,
+            "qty_tonnes": 2624.6
+          },
+          {
+            "origin": "Peru",
+            "origin_lon": -75.0,
+            "origin_lat": -10.0,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 13476.8,
+            "qty_tonnes": 2394.1
+          },
+          {
+            "origin": "Guatemala",
+            "origin_lon": -90.2,
+            "origin_lat": 15.8,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 13245.7,
+            "qty_tonnes": 2164.5
+          },
+          {
+            "origin": "Kenya",
+            "origin_lon": 37.9,
+            "origin_lat": 0.0,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 12135.4,
+            "qty_tonnes": 1879.2
+          },
+          {
+            "origin": "Indonesia",
+            "origin_lon": 113.9,
+            "origin_lat": -0.8,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 8617.6,
+            "qty_tonnes": 1632.0
+          },
+          {
+            "origin": "El Salvador",
+            "origin_lon": -88.9,
+            "origin_lat": 13.8,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 6475.0,
+            "qty_tonnes": 1050.0
+          },
+          {
+            "origin": "Costa Rica",
+            "origin_lon": -84.0,
+            "origin_lat": 9.7,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 6411.0,
+            "qty_tonnes": 1025.9
+          },
+          {
+            "origin": "Germany",
+            "origin_lon": 10.5,
+            "origin_lat": 51.2,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 5864.9,
+            "qty_tonnes": 1467.0
+          },
+          {
+            "origin": "Mexico",
+            "origin_lon": -99.1,
+            "origin_lat": 23.6,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 5759.1,
+            "qty_tonnes": 1017.5
+          },
+          {
+            "origin": "Tanzania",
+            "origin_lon": 34.9,
+            "origin_lat": -6.4,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 4638.1,
+            "qty_tonnes": 928.5
+          },
+          {
+            "origin": "Uganda",
+            "origin_lon": 32.3,
+            "origin_lat": 1.4,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 3451.8,
+            "qty_tonnes": 818.7
+          },
+          {
+            "origin": "Belgium",
+            "origin_lon": 4.5,
+            "origin_lat": 50.5,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 1397.3,
+            "qty_tonnes": 347.7
+          },
+          {
+            "origin": "Switzerland",
+            "origin_lon": 8.2,
+            "origin_lat": 46.8,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 1343.0,
+            "qty_tonnes": 382.6
+          },
+          {
+            "origin": "East Timor",
+            "origin_lon": 125.7,
+            "origin_lat": -8.9,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 1319.8,
+            "qty_tonnes": 232.6
+          },
+          {
+            "origin": "China",
+            "origin_lon": 104.2,
+            "origin_lat": 35.9,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 1313.2,
+            "qty_tonnes": 282.9
+          },
+          {
+            "origin": "Rwanda",
+            "origin_lon": 29.9,
+            "origin_lat": -1.9,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 1305.8,
+            "qty_tonnes": 167.5
+          },
+          {
+            "origin": "Panama",
+            "origin_lon": -80.8,
+            "origin_lat": 8.5,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 1267.4,
+            "qty_tonnes": 208.7
+          },
+          {
+            "origin": "Djibouti",
+            "origin_lon": 42.6,
+            "origin_lat": 11.8,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 807.9,
+            "qty_tonnes": 138.9
+          },
+          {
+            "origin": "Denmark",
+            "origin_lon": 10.0,
+            "origin_lat": 56.3,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 802.7,
+            "qty_tonnes": 96.0
+          },
+          {
+            "origin": "Singapore",
+            "origin_lon": 103.8,
+            "origin_lat": 1.4,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 752.9,
+            "qty_tonnes": 155.3
+          },
+          {
+            "origin": "Burundi",
+            "origin_lon": 29.9,
+            "origin_lat": -3.4,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 726.9,
+            "qty_tonnes": 103.6
+          },
+          {
+            "origin": "Ecuador",
+            "origin_lon": -78.2,
+            "origin_lat": -1.8,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 371.0,
+            "qty_tonnes": 23.7
+          },
+          {
+            "origin": "Chile",
+            "origin_lon": -71.5,
+            "origin_lat": -35.7,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 303.2,
+            "qty_tonnes": 38.5
+          },
+          {
+            "origin": "Canada",
+            "origin_lon": -96.8,
+            "origin_lat": 56.1,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 293.6,
+            "qty_tonnes": 63.6
+          },
+          {
+            "origin": "Bolivia",
+            "origin_lon": -64.7,
+            "origin_lat": -16.3,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 280.4,
+            "qty_tonnes": 21.2
+          },
+          {
+            "origin": "United Kingdom",
+            "origin_lon": -3.4,
+            "origin_lat": 55.4,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 226.1,
+            "qty_tonnes": 38.5
+          },
+          {
+            "origin": "United States",
+            "origin_lon": -98.6,
+            "origin_lat": 39.5,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 173.4,
+            "qty_tonnes": 28.8
+          },
+          {
+            "origin": "Zambia",
+            "origin_lon": 27.8,
+            "origin_lat": -13.1,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 132.7,
+            "qty_tonnes": 19.2
+          },
+          {
+            "origin": "New Zealand",
+            "origin_lon": 172.6,
+            "origin_lat": -40.9,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 125.8,
+            "qty_tonnes": 16.4
+          },
+          {
+            "origin": "Netherlands",
+            "origin_lon": 5.3,
+            "origin_lat": 52.1,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 114.1,
+            "qty_tonnes": 19.2
+          },
+          {
+            "origin": "Myanmar",
+            "origin_lon": 96.7,
+            "origin_lat": 19.2,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 104.7,
+            "qty_tonnes": 11.2
+          },
+          {
+            "origin": "Malaysia",
+            "origin_lon": 109.7,
+            "origin_lat": 4.2,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 95.4,
+            "qty_tonnes": 19.7
+          },
+          {
+            "origin": "Yemen",
+            "origin_lon": 47.6,
+            "origin_lat": 15.6,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 65.6,
+            "qty_tonnes": 3.5
+          },
+          {
+            "origin": "Thailand",
+            "origin_lon": 100.9,
+            "origin_lat": 15.9,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 52.8,
+            "qty_tonnes": 4.7
+          },
+          {
+            "origin": "Italy",
+            "origin_lon": 12.6,
+            "origin_lat": 42.5,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 48.5,
+            "qty_tonnes": 10.0
+          },
+          {
+            "origin": "Lao PDR",
+            "origin_lon": 102.5,
+            "origin_lat": 17.9,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 33.3,
+            "qty_tonnes": 9.0
+          },
+          {
+            "origin": "Nepal",
+            "origin_lon": 84.1,
+            "origin_lat": 28.4,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 27.9,
+            "qty_tonnes": 1.9
+          },
+          {
+            "origin": "Philippines",
+            "origin_lon": 121.8,
+            "origin_lat": 13.0,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 7.1,
+            "qty_tonnes": 0.4
+          },
+          {
+            "origin": "France",
+            "origin_lon": 2.2,
+            "origin_lat": 46.2,
+            "dest_lon": 133.8,
+            "dest_lat": -25.0,
+            "value_usd_k": 1.4,
+            "qty_tonnes": 0.0
+          }
+        ]
+      },
+      "mark": {
+        "type": "circle",
+        "opacity": 0,
+        "size": 200,
+        "cursor": "pointer"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "origin_lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "origin_lat",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "origin",
+            "title": "Exporting Country"
+          },
+          {
+            "field": "value_usd_k",
+            "title": "Value (USD '000)",
+            "format": ",.0f"
+          },
+          {
+            "field": "qty_tonnes",
+            "title": "Quantity (tonnes)",
+            "format": ",.1f"
+          }
+        ]
+      }
+    }
+  ]
+}

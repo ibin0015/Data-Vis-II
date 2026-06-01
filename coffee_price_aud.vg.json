@@ -1,0 +1,224 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Annual Average Coffee Price in Australia (AUD/lb)",
+    "subtitle": "Green coffee bean price converted from USD using historical annual exchange rates · 5-year rolling average shown as trend line",
+    "fontSize": 16,
+    "subtitleFontSize": 11,
+    "color": "#3B1F0A",
+    "subtitleColor": "#7B5E3A",
+    "anchor": "start",
+    "offset": 10
+  },
+  "data": {
+    "url": "Data/coffee_price_aud.csv"
+  },
+  "vconcat": [
+    {
+      "width": 720,
+      "height": 380,
+      "layer": [
+        {
+          "mark": {
+            "type": "bar",
+            "opacity": 0.82,
+            "cornerRadiusTopLeft": 2,
+            "cornerRadiusTopRight": 2
+          },
+          "encoding": {
+            "x": {
+              "field": "year",
+              "type": "ordinal",
+              "scale": {"paddingInner": 0.3},
+              "axis": {
+                "title": null,
+                "labelAngle": -45,
+                "labelFontSize": 11,
+                "labelColor": "#4A2C0A",
+                "tickColor": "#C4A882",
+                "domainColor": "#C4A882",
+                "values": [1969,1975,1980,1985,1990,1995,2000,2005,2010,2015,2020,2026]
+              }
+            },
+            "y": {
+              "field": "aud",
+              "type": "quantitative",
+              "axis": {
+                "title": "Price (AUD / lb)",
+                "titleFontSize": 12,
+                "titleColor": "#4A2C0A",
+                "labelColor": "#4A2C0A",
+                "labelFontSize": 11,
+                "gridColor": "#E8D5BC",
+                "gridDash": [4, 4],
+                "domainColor": "#C4A882",
+                "tickColor": "#C4A882",
+                "format": "$.2f"
+              },
+              "scale": {"domain": [0, 6.5]}
+            },
+            "color": {"value": "#8B5A2B"},
+            "tooltip": [
+              {"field": "year", "title": "Year", "type": "ordinal"},
+              {"field": "usd", "title": "USD/lb", "format": "$.2f"},
+              {"field": "aud", "title": "AUD/lb", "format": "$.2f"},
+              {"field": "fx_rate", "title": "FX Rate (USD→AUD)", "format": ".2f"}
+            ],
+            "opacity": {
+              "condition": {"param": "brush", "value": 0.85},
+              "value": 0.3
+            }
+          }
+        },
+        {
+          "transform": [
+            {
+              "window": [{"op": "mean", "field": "aud", "as": "rolling_avg"}],
+              "frame": [-4, 0]
+            }
+          ],
+          "mark": {
+            "type": "line",
+            "strokeDash": [5, 3],
+            "strokeWidth": 2.2,
+            "color": "#3B1005",
+            "opacity": 0.9
+          },
+          "encoding": {
+            "x": {
+              "field": "year",
+              "type": "ordinal"
+            },
+            "y": {
+              "field": "rolling_avg",
+              "type": "quantitative"
+            }
+          }
+        },
+        {
+          "data": {
+            "values": [
+              {"year": "1977", "aud": 2.76, "label": "Brazilian frost crisis", "dy": -38},
+              {"year": "1986", "aud": 3.02, "label": "Supply shortage spike", "dy": -38},
+              {"year": "1997", "aud": 2.76, "label": "Asian demand boom", "dy": -38},
+              {"year": "2011", "aud": 2.40, "label": "Global price peak", "dy": -38},
+              {"year": "2025", "aud": 5.69, "label": "Record AUD high", "dy": -38}
+            ]
+          },
+          "layer": [
+            {
+              "mark": {
+                "type": "rule",
+                "strokeDash": [3, 2],
+                "strokeWidth": 1.2,
+                "opacity": 0.65,
+                "color": "#8B5A2B"
+              },
+              "encoding": {
+                "x": {"field": "year", "type": "ordinal"},
+                "y": {"field": "aud", "type": "quantitative"},
+                "y2": {"value": 0}
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "fontSize": 9.5,
+                "fontStyle": "italic",
+                "color": "#5C2E00",
+                "align": "center",
+                "baseline": "bottom",
+                "dy": -42,
+                "lineBreak": "\n"
+              },
+              "encoding": {
+                "x": {"field": "year", "type": "ordinal"},
+                "y": {"field": "aud", "type": "quantitative"},
+                "text": {"field": "label"}
+              }
+            },
+            {
+              "mark": {
+                "type": "point",
+                "filled": true,
+                "size": 50,
+                "color": "#3B1005",
+                "opacity": 0.8
+              },
+              "encoding": {
+                "x": {"field": "year", "type": "ordinal"},
+                "y": {"field": "aud", "type": "quantitative"}
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "values": [
+              {"x": "2025", "y": 6.2, "note": "† USD converted using historical annual average exchange rates (RBA). Trend = 5-yr rolling mean.  Source: Macrotrends."}
+            ]
+          },
+          "mark": {
+            "type": "text",
+            "fontSize": 9,
+            "fontStyle": "italic",
+            "color": "#9C7A56",
+            "align": "right",
+            "baseline": "top"
+          },
+          "encoding": {
+            "x": {"field": "x", "type": "ordinal"},
+            "y": {"field": "y", "type": "quantitative"},
+            "text": {"field": "note"}
+          }
+        }
+      ],
+      "resolve": {"scale": {"x": "shared"}}
+    },
+    {
+      "width": 720,
+      "height": 60,
+      "mark": {
+        "type": "bar",
+        "opacity": 0.5,
+        "cornerRadiusTopLeft": 1,
+        "cornerRadiusTopRight": 1
+      },
+      "params": [
+        {
+          "name": "brush",
+          "select": {"type": "interval", "encodings": ["x"]},
+          "views": ["main"]
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "axis": {
+            "title": "Drag to select a time range",
+            "titleFontSize": 10,
+            "titleColor": "#7B5E3A",
+            "labelFontSize": 9,
+            "labelColor": "#7B5E3A",
+            "values": [1970,1980,1990,2000,2010,2020,2026],
+            "domainColor": "#C4A882",
+            "tickColor": "#C4A882"
+          }
+        },
+        "y": {
+          "field": "aud",
+          "type": "quantitative",
+          "axis": null
+        },
+        "color": {"value": "#8B5A2B"}
+      }
+    }
+  ],
+  "config": {
+    "background": "#FDF6EE",
+    "view": {"stroke": "transparent"},
+    "concat": {"spacing": 8},
+    "title": {"color": "#3B1F0A", "subtitleColor": "#7B5E3A"}
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 300,
+  "title": {
+    "text": "Preferred Coffee Bean Types by Domestic Consumption"
+  },
+  "data": {
+    "url": "Data/Coffee_domestic_consumption.csv"
+  },
+  "transform": [
+    {
+      "calculate": "indexof(datum['Coffee type'], 'Arabica') >= 0 ? datum['Total_domestic_consumption'] : 0",
+      "as": "arabica_val"
+    },
+    {
+      "calculate": "indexof(datum['Coffee type'], 'Robusta') >= 0 ? datum['Total_domestic_consumption'] : 0",
+      "as": "robusta_val"
+    },
+    {
+      "fold": [
+        "arabica_val",
+        "robusta_val"
+      ],
+      "as": [
+        "bean_type",
+        "consumption"
+      ]
+    },
+    {
+      "filter": "datum.consumption > 0"
+    },
+    {
+      "calculate": "datum.bean_type === 'arabica_val' ? 'Arabica' : 'Robusta'",
+      "as": "Coffee Type"
+    },
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "consumption",
+          "as": "total_consumption"
+        }
+      ],
+      "groupby": [
+        "Coffee Type"
+      ]
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "total_consumption",
+          "as": "grand_total"
+        }
+      ]
+    },
+    {
+      "calculate": "datum.total_consumption / datum.grand_total",
+      "as": "percentage"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#aaaaaa",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "y": {
+          "field": "Coffee Type",
+          "type": "nominal",
+          "sort": {
+            "field": "total_consumption",
+            "order": "descending"
+          },
+          "title": "Coffee Type"
+        },
+        "x": {
+          "field": "total_consumption",
+          "type": "quantitative"
+        },
+        "x2": {
+          "value": 0
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 120
+      },
+      "encoding": {
+        "y": {
+          "field": "Coffee Type",
+          "type": "nominal",
+          "sort": {
+            "field": "total_consumption",
+            "order": "descending"
+          },
+          "title": "Coffee Type",
+          "axis": {
+            "labelFontSize": 12,
+            "titleFontSize": 13
+          }
+        },
+        "x": {
+          "field": "total_consumption",
+          "type": "quantitative",
+          "title": "Total Domestic Consumption",
+          "axis": {
+            "format": ".2s",
+            "titleFontSize": 13
+          }
+        },
+        "color": {
+          "field": "Coffee Type",
+          "type": "nominal",
+          "legend": {
+            "title": "Coffee Type"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Coffee Type",
+            "title": "Coffee Type"
+          },
+          {
+            "field": "total_consumption",
+            "title": "Total Consumption",
+            "format": ",.0f"
+          },
+          {
+            "field": "percentage",
+            "title": "Share",
+            "format": ".1%"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+        integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="style.css" media="all">
+
+    <title>Coffee Consumption Dashboard</title>
+</head>
+
+<body>
+    <div class="page">
+
+        <!-- Title -->
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <img src="Data/Banner.jpg" alt="Coffee beans spilling from a burlap sack" 
+                style="width: 71.5vw; display: block; position: relative; left: 50%; transform: translateX(-50%); margin-top: -35px; height: 100px;">
+            </div>
+        </div>
+
+          <!-- Image section: 4 equal columns -->
+        <div class="pure-g">
+            <!-- Column 1: heading + image + source -->
+            <div class="pure-u-1-4">
+                <img src="Data/coffee.jpeg" alt="Coffee beans spilling from a burlap sack"
+                    style="width: 85%; height: 220px; object-fit: cover;margin-top: 20px;">
+                <p class="small-font">
+                    Image source: <a href="https://www.nescafe.com/au/coffee-culture/knowledge/coffee-beans"
+                    target="_blank">Nescafé Australia</a>
+                </p>
+            </div>
+            <!-- Column 2: text pushed down to align with image -->
+            <div class="pure-u-1-4">
+                <div style="margin-bottom: 20px; padding-right: 23px;">
+                    <h2>How it all started?</h2>
+                    <p style="text-align: justify;">Coffee originated in Ethiopia around 800 AD, spreading across Arabia, Persia, 
+                        and Europe by the 17th century. The world's first coffee house opened in Constantinople in 1475, making 
+                        coffee a global social staple. Today, Latin American nations led by Brazil dominate global production (Nescafé, 2023).</p>
+                </div>
+            </div>
+            <!-- Column 3: chart -->
+            <div class="pure-u-1-2">
+                <div id="lollipop_bean_preference" class="vis-container"></div>
+                <p style="text-align: justify; padding-right: 4.1%; padding-left: 4.1%"> People around the world choose Arabica as their go-to coffee bean, 
+                    drawn to its mild and aromatic qualities. While Robusta is less preferred for home drinking, its bold kick keeps it a firm favourite in 
+                    espresso blends and instant coffee. Together, these two bean types make up nearly all of the world's coffee supply, each with its own loyal following.</p>
+            </div>
+        </div>
+
+        <!-- Section 2: Second bar chart (full width) -->
+        <div class="pure-g">
+            <div class="pure-u-1-2">
+                <div id="pie_favourite_coffee" class="vis-container"></div>
+            </div>
+            <div class="pure-u-1-2">
+                <h2 style = "padding-right: 4.1%; padding-left: 4.1%">How the World Takes Its Coffee?</h2>
+                <p style="text-align: justify; padding-right: 4.1%; padding-left: 4.1%">Americano with Milk and Latte top the charts as the world's most ordered coffee drinks, each commanding over 20% of orders. Mid-tier favourites like Americano
+                     and Cappuccino hold steady, while Cortado and Espresso remain niche choices despite their strong cultural roots. Interestingly, the "Others" category rivals 
+                     the top contenders, hinting at a growing curiosity for specialty and non-traditional coffee drinks.</p>
+            </div>
+        </div>
+
+
+        <!-- Section 3: Description left, bar chart right -->
+        <div class="pure-g">
+            <div class="pure-u-1-2">
+                <div class="description description-left">
+                    <h2>Top 10 Coffee Bean Exporters 2025</h2>
+                    <p>Brazil leads global green coffee bean exports in 2025 with 37,000 thousand 60 kg bags, 
+                    representing around 31% of total exports. Vietnam follows strongly in second place with 
+                    24,600 thousand bags, while Colombia ranks third at 11,500 thousand bags.</p>
+                    <p>Together, the top three exporters account for nearly 62% of all global bean exports, 
+                    reflecting a continued concentration among a small number of producing nations. Indonesia 
+                    rises notably to fourth place in 2025, with African exporters Ethiopia and Uganda rounding out the top six.</p>
+                </div>
+            </div>
+            <div class="pure-u-1-2">
+                <div id="bar_top_exporters" class="vis-container"></div>
+            </div>
+        </div>
+
+        <!-- Section 4: Choropleth map (full width) -->
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <div id="map_world_consumption" class="vis-container"></div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="vega_lite_vis.js"></script>
+</body>
+
+</html>

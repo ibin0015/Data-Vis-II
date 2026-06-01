@@ -1,0 +1,176 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Average Flat White Price by State",
+    "subtitle": "Difference from national average ($4.99) · Source: smallflatwhite.com",
+    "fontSize": 16, "subtitleFontSize": 11,
+    "color": "#3B1F0A", "subtitleColor": "#7B5E3A",
+    "anchor": "start", "offset": 10
+  },
+  "width": 520,
+  "height": 300,
+  "config": {
+    "background": "#FDF6EE",
+    "view": { "stroke": "transparent" }
+  },
+  "data": {
+    "values": [
+      { "label": "Northern Territory (NT)", "avg_price": 5.34, "diff": 0.35,  "cafes": 57   },
+      { "label": "South Australia (SA)",    "avg_price": 5.14, "diff": 0.15,  "cafes": 375  },
+      { "label": "Tasmania (TAS)",          "avg_price": 5.13, "diff": 0.14,  "cafes": 186  },
+      { "label": "Western Australia (WA)",  "avg_price": 5.05, "diff": 0.06,  "cafes": 657  },
+      { "label": "Queensland (QLD)",        "avg_price": 5.04, "diff": 0.05,  "cafes": 1373 },
+      { "label": "ACT",                     "avg_price": 5.02, "diff": 0.03,  "cafes": 194  },
+      { "label": "Victoria (VIC)",          "avg_price": 4.99, "diff": 0.00,  "cafes": 1349 },
+      { "label": "New South Wales (NSW)",   "avg_price": 4.89, "diff": -0.10, "cafes": 1833 }
+    ]
+  },
+  "layer": [
+    {
+      "description": "Zero reference line",
+      "mark": { "type": "rule", "color": "#8B4513", "strokeDash": [5, 4], "strokeWidth": 1.4, "opacity": 0.7 },
+      "encoding": {
+        "x": { "datum": 0, "type": "quantitative" }
+      }
+    },
+    {
+      "description": "Diverging bars",
+      "mark": { "type": "bar", "cornerRadius": 3 },
+      "encoding": {
+        "y": {
+          "field": "label", "type": "ordinal",
+          "sort": ["Northern Territory (NT)","South Australia (SA)","Tasmania (TAS)","Western Australia (WA)","Queensland (QLD)","ACT","Victoria (VIC)","New South Wales (NSW)"],
+          "axis": {
+            "title": null,
+            "labelFontSize": 12, "labelFontWeight": "bold",
+            "labelColor": "#3B1F0A", "ticks": false, "domain": false,
+            "labelLimit": 200
+          }
+        },
+        "x": {
+          "field": "diff", "type": "quantitative",
+          "scale": { "domain": [-0.20, 0.60] },
+          "axis": {
+            "title": "Difference from national average (AUD)",
+            "titleColor": "#7B5E3A",
+            "format": "+$,.2f",
+            "labelColor": "#7B5E3A", "tickColor": "#C4A882", "domainColor": "#C4A882",
+            "grid": true, "gridColor": "#E8D5C0", "gridDash": [2, 3],
+            "labelFontSize": 11
+          }
+        },
+        "x2": { "datum": 0 },
+        "color": {
+          "condition": { "test": "datum.diff >= 0", "value": "#7A3D0A" },
+          "value": "#DDB97A"
+        },
+        "tooltip": [
+          { "field": "label",     "title": "State" },
+          { "field": "avg_price", "title": "Avg Price",   "format": "$,.2f" },
+          { "field": "diff",      "title": "vs National", "format": "+$,.2f" },
+          { "field": "cafes",     "title": "Cafés",       "format": "," }
+        ]
+      }
+    },
+    {
+      "description": "Natl avg label",
+      "data": { "values": [{}] },
+      "mark": { "type": "text", "align": "center", "dy": -158, "fontSize": 9, "fontStyle": "italic", "color": "#8B4513" },
+      "encoding": {
+        "x": { "datum": 0, "type": "quantitative", "scale": { "domain": [-0.20, 0.60] } },
+        "text": { "value": "Natl avg $4.99" }
+      }
+    },
+    {
+      "description": "Price label — white halo (stroke layer)",
+      "mark": {
+        "type": "text",
+        "fontSize": 11, "fontWeight": "bold", "baseline": "middle",
+        "stroke": "#FDF6EE",
+        "strokeWidth": 3,
+        "strokeJoin": "round"
+      },
+      "encoding": {
+        "y": {
+          "field": "label", "type": "ordinal",
+          "sort": ["Northern Territory (NT)","South Australia (SA)","Tasmania (TAS)","Western Australia (WA)","Queensland (QLD)","ACT","Victoria (VIC)","New South Wales (NSW)"]
+        },
+        "x": { "field": "diff", "type": "quantitative", "scale": { "domain": [-0.20, 0.60] } },
+        "dx": { "condition": { "test": "datum.diff >= 0", "value": 6 }, "value": -6 },
+        "align": { "condition": { "test": "datum.diff >= 0", "value": "left" }, "value": "right" },
+        "text": { "field": "avg_price", "format": "$,.2f" },
+        "color": { "value": "#FDF6EE" }
+      }
+    },
+    {
+      "description": "Price label — brown fill on top",
+      "mark": {
+        "type": "text",
+        "fontSize": 11, "fontWeight": "bold", "baseline": "middle"
+      },
+      "encoding": {
+        "y": {
+          "field": "label", "type": "ordinal",
+          "sort": ["Northern Territory (NT)","South Australia (SA)","Tasmania (TAS)","Western Australia (WA)","Queensland (QLD)","ACT","Victoria (VIC)","New South Wales (NSW)"]
+        },
+        "x": { "field": "diff", "type": "quantitative", "scale": { "domain": [-0.20, 0.60] } },
+        "dx": { "condition": { "test": "datum.diff >= 0", "value": 6 }, "value": -6 },
+        "align": { "condition": { "test": "datum.diff >= 0", "value": "left" }, "value": "right" },
+        "text": { "field": "avg_price", "format": "$,.2f" },
+        "color": { "value": "#3B1F0A" }
+      }
+    },
+    {
+      "description": "NT callout line",
+      "transform": [ { "filter": "datum.label === 'Northern Territory (NT)'" } ],
+      "mark": { "type": "rule", "color": "#4A2409", "strokeWidth": 1, "strokeDash": [3, 3] },
+      "encoding": {
+        "y": {
+          "field": "label", "type": "ordinal",
+          "sort": ["Northern Territory (NT)","South Australia (SA)","Tasmania (TAS)","Western Australia (WA)","Queensland (QLD)","ACT","Victoria (VIC)","New South Wales (NSW)"]
+        },
+        "x":  { "datum": 0.35, "type": "quantitative", "scale": { "domain": [-0.20, 0.60] } },
+        "x2": { "datum": 0.47 }
+      }
+    },
+    {
+      "description": "NT annotation text",
+      "transform": [ { "filter": "datum.label === 'Northern Territory (NT)'" } ],
+      "mark": { "type": "text", "align": "left", "dx": 4, "fontSize": 10, "fontWeight": "bold", "color": "#4A2409", "baseline": "middle" },
+      "encoding": {
+        "y": {
+          "field": "label", "type": "ordinal",
+          "sort": ["Northern Territory (NT)","South Australia (SA)","Tasmania (TAS)","Western Australia (WA)","Queensland (QLD)","ACT","Victoria (VIC)","New South Wales (NSW)"]
+        },
+        "x": { "datum": 0.47, "type": "quantitative", "scale": { "domain": [-0.20, 0.60] } },
+        "text": { "value": "▲ Most expensive" }
+      }
+    },
+    {
+      "description": "NSW callout line — from right tip of bar (datum 0) going right",
+      "transform": [ { "filter": "datum.label === 'New South Wales (NSW)'" } ],
+      "mark": { "type": "rule", "color": "#7B5E3A", "strokeWidth": 1, "strokeDash": [3, 3] },
+      "encoding": {
+        "y": {
+          "field": "label", "type": "ordinal",
+          "sort": ["Northern Territory (NT)","South Australia (SA)","Tasmania (TAS)","Western Australia (WA)","Queensland (QLD)","ACT","Victoria (VIC)","New South Wales (NSW)"]
+        },
+        "x":  { "datum": 0, "type": "quantitative", "scale": { "domain": [-0.20, 0.60] } },
+        "x2": { "datum": 0.20 }
+      }
+    },
+    {
+      "description": "NSW annotation text",
+      "transform": [ { "filter": "datum.label === 'New South Wales (NSW)'" } ],
+      "mark": { "type": "text", "align": "left", "dx": 4, "fontSize": 10, "fontWeight": "bold", "color": "#7B5E3A", "baseline": "middle" },
+      "encoding": {
+        "y": {
+          "field": "label", "type": "ordinal",
+          "sort": ["Northern Territory (NT)","South Australia (SA)","Tasmania (TAS)","Western Australia (WA)","Queensland (QLD)","ACT","Victoria (VIC)","New South Wales (NSW)"]
+        },
+        "x": { "datum": 0.20, "type": "quantitative", "scale": { "domain": [-0.20, 0.60] } },
+        "text": { "value": "▼ Cheapest" }
+      }
+    }
+  ]
+}
