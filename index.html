@@ -130,8 +130,20 @@
     </div>
   </div>
 
-  <!-- Café dot map — full width -->
+  <!-- Caffeine bubble — full width, after pie chart -->
   <div class="section-vis">
+    <div class="container-wide">
+      <div class="section-intro-centered">
+        <p class="vis-label">Caffeine Intake by Age Group</p>
+        <h3 class="section-heading">Young adults lead, but every generation drinks</h3>
+        <p class="section-desc">Bubble size encodes each age group's share of total caffeine consumption from sweetened beverages. <strong>Young adults aged 18–29</strong> lead at 21 mg/day. Older Australians draw their caffeine from traditional brewed coffee rather than sweetened drinks.</p>
+      </div>
+      <div id="bubble_caffeine_by_age" class="vis-container"></div>
+    </div>
+  </div>
+
+  <!-- Café dot map — full width -->
+  <div class="section-vis section-shaded">
     <div class="container-wide">
       <div class="section-intro-centered">
         <p class="vis-label">Australia's Café Footprint</p>
@@ -161,27 +173,15 @@
     <div class="chapter-line"></div>
   </div>
 
-  <div class="section-centered">
+  <div class="section-centered section-shaded">
     <div class="container-narrow">
       <h2 class="section-heading">Follow the bean all the way to the cup</h2>
-      <p>Three things become clear at the end of the supply chain: who drinks it, what it costs, and why the price keeps climbing. The answers are shaped by geography, economics, and decades of volatile commodity markets.</p>
-    </div>
-  </div>
-
-  <!-- Caffeine bubble — full width -->
-  <div class="section-vis section-shaded">
-    <div class="container-wide">
-      <div class="section-intro-centered">
-        <p class="vis-label">Caffeine Intake by Age Group</p>
-        <h3 class="section-heading">Young adults lead, but every generation drinks</h3>
-        <p class="section-desc">Bubble size encodes each age group's share of total caffeine consumption from sweetened beverages. <strong>Young adults aged 18–29</strong> lead at 21 mg/day. Older Australians draw their caffeine from traditional brewed coffee rather than sweetened drinks.</p>
-      </div>
-      <div id="bubble_caffeine_by_age" class="vis-container"></div>
+      <p>At the end of the supply chain, two questions remain: what does it cost, and why does the price keep climbing? The answers are shaped by geography, economics, and decades of volatile commodity markets.</p>
     </div>
   </div>
 
   <!-- Coffee price — chart on top, narration below -->
-  <div class="section-vis">
+  <div class="section-vis section-shaded">
     <div class="container-wide">
       <div class="section-intro-centered">
         <p class="vis-label">Green Coffee Bean Price, AUD/lb 1969–2024</p>
@@ -195,32 +195,32 @@
     </div>
   </div>
 
-  <!-- Flat white by state — chart on top, narration below -->
-  <div class="section-vis section-shaded">
-    <div class="container-wide">
-      <div class="section-intro-centered">
+  <!-- Flat white by state — side by side -->
+  <div class="section-two-col">
+    <div class="container-wide grid-2">
+      <div class="col-chart">
+        <div id="bar_flatwhite_state_diverge" class="vis-container"></div>
+      </div>
+      <div class="col-text">
         <p class="vis-label">Flat White Price by State — Deviation from $4.99 National Average</p>
         <h3 class="section-heading">What a flat white costs depends on where you live</h3>
-      </div>
-      <div id="bar_flatwhite_state_diverge" class="vis-container vis-container--narrow"></div>
-      <div class="section-narration">
         <p>The flat white is Australia's benchmark coffee — and its price varies more than you might expect. <strong>Darwin leads at $5.34</strong>, almost $0.45 above the cheapest state. New South Wales, despite hosting the most cafés in the country, comes in at just $4.89.</p>
         <p>Victoria sits at exactly the national average of $4.99 — fitting for the state that defines Australia's coffee standard. The NT premium reflects the economics of remote business: higher freight, fewer competitors, and a smaller customer base spreading fixed costs across fewer cups each day.</p>
       </div>
     </div>
   </div>
 
-  <!-- City strip chart — chart on top, narration below -->
-  <div class="section-vis">
-    <div class="container-wide">
-      <div class="section-intro-centered">
+  <!-- City strip chart — side by side -->
+  <div class="section-two-col section-shaded">
+    <div class="container-wide grid-2">
+      <div class="col-text">
         <p class="vis-label">City-Level Prices, Grouped by State</p>
         <h3 class="section-heading">Zoom in and an interesting pattern emerges</h3>
-      </div>
-      <div id="strip_flatwhite_by_city" class="vis-container vis-container--wide"></div>
-      <div class="section-narration">
         <p>Within each state, city prices are remarkably consistent. Brisbane, Gold Coast, Sunshine Coast and Cairns all sit at exactly $5.03. Adelaide, Barossa Valley and Victor Harbor all share $5.13. This consistency tells us that pricing is driven by <strong>state-level factors</strong> — wages, rent, supply logistics — rather than individual city dynamics.</p>
         <p>The one clear outlier is Darwin and Alice Springs in the NT, which stand alone at $5.35, well above every other city in the country. Hover over any dot to see the city name and price.</p>
+      </div>
+      <div class="col-chart">
+        <div id="strip_flatwhite_by_city" class="vis-container"></div>
       </div>
     </div>
   </div>
