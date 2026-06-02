@@ -17,135 +17,74 @@
       "as": "robusta_val"
     },
     {
-      "fold": [
-        "arabica_val",
-        "robusta_val"
-      ],
-      "as": [
-        "bean_type",
-        "consumption"
-      ]
+      "fold": ["arabica_val", "robusta_val"],
+      "as": ["bean_type", "consumption"]
     },
-    {
-      "filter": "datum.consumption > 0"
-    },
+    { "filter": "datum.consumption > 0" },
     {
       "calculate": "datum.bean_type === 'arabica_val' ? 'Arabica' : 'Robusta'",
       "as": "Coffee Type"
     },
     {
-      "aggregate": [
-        {
-          "op": "sum",
-          "field": "consumption",
-          "as": "total_consumption"
-        }
-      ],
-      "groupby": [
-        "Coffee Type"
-      ]
+      "aggregate": [{ "op": "sum", "field": "consumption", "as": "total_consumption" }],
+      "groupby": ["Coffee Type"]
     },
     {
-      "joinaggregate": [
-        {
-          "op": "sum",
-          "field": "total_consumption",
-          "as": "grand_total"
-        }
-      ]
+      "joinaggregate": [{ "op": "sum", "field": "total_consumption", "as": "grand_total" }]
     },
-    {
-      "calculate": "datum.total_consumption / datum.grand_total",
-      "as": "percentage"
-    },
-    {
-      "calculate": "datum.total_consumption / 1000000",
-      "as": "consumption_millions"
-    },
-    {
-      "calculate": "datum.grand_total / 1000000",
-      "as": "grand_total_millions"
-    }
+    { "calculate": "datum.total_consumption / datum.grand_total", "as": "percentage" },
+    { "calculate": "datum.total_consumption / 1000000", "as": "consumption_millions" },
+    { "calculate": "datum.grand_total / 1000000", "as": "grand_total_millions" }
   ],
   "layer": [
     {
-      "mark": {
-        "type": "rule",
-        "color": "#aaaaaa",
-        "strokeWidth": 2
-      },
+      "mark": { "type": "rule", "color": "#C4A882", "strokeWidth": 2 },
       "encoding": {
         "y": {
           "field": "Coffee Type",
           "type": "nominal",
-          "sort": {
-            "field": "consumption_millions",
-            "order": "descending"
-          },
+          "sort": { "field": "consumption_millions", "order": "descending" },
           "title": "Coffee Type"
         },
-        "x": {
-          "field": "consumption_millions",
-          "type": "quantitative"
-        },
-        "x2": {
-          "value": 0
-        }
+        "x": { "field": "consumption_millions", "type": "quantitative" },
+        "x2": { "value": 0 }
       }
     },
     {
-      "mark": {
-        "type": "point",
-        "filled": true,
-        "size": 120
-      },
+      "mark": { "type": "point", "filled": true, "size": 120 },
       "encoding": {
         "y": {
           "field": "Coffee Type",
           "type": "nominal",
-          "sort": {
-            "field": "consumption_millions",
-            "order": "descending"
-          },
+          "sort": { "field": "consumption_millions", "order": "descending" },
           "title": "Coffee Type",
-          "axis": {
-            "labelFontSize": 12,
-            "titleFontSize": 13
-          }
+          "axis": { "labelFontSize": 12, "titleFontSize": 13 }
         },
         "x": {
           "field": "consumption_millions",
           "type": "quantitative",
           "title": "Total Domestic Consumption (millions of 60kg bags)",
-          "axis": {
-            "format": ",.0f",
-            "titleFontSize": 13
-          }
+          "axis": { "format": ",.0f", "titleFontSize": 13 }
         },
         "color": {
           "field": "Coffee Type",
           "type": "nominal",
-          "legend": {
-            "title": "Coffee Type"
-          }
+          "scale": {
+            "domain": ["Arabica", "Robusta"],
+            "range": ["#3B1005", "#8B5A2B"]
+          },
+          "legend": null
         },
         "tooltip": [
-          {
-            "field": "Coffee Type",
-            "title": "Coffee Type"
-          },
-          {
-            "field": "consumption_millions",
-            "title": "Total Consumption (M bags)",
-            "format": ",.1f"
-          },
-          {
-            "field": "percentage",
-            "title": "Share",
-            "format": ".1%"
-          }
+          { "field": "Coffee Type", "title": "Coffee Type" },
+          { "field": "consumption_millions", "title": "Total Consumption (M bags)", "format": ",.1f" },
+          { "field": "percentage", "title": "Share", "format": ".1%" }
         ]
       }
     }
-  ]
+  ],
+  "config": {
+    "background": "#FDF6EE",
+    "view": { "stroke": "transparent" }
+  }
 }
